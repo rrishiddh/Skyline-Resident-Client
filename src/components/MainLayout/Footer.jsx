@@ -14,13 +14,13 @@ const Footer = () => {
         <nav className="md:place-self-center md:justify-self-end">
           <div className="grid grid-flow-col gap-4">
             <a>
-              <img src="https://img.icons8.com/?size=100&id=uLWV5A9vXIPu&format=png&color=000000" className="w-10" />
+              <img src="https://img.icons8.com/?size=100&id=uLWV5A9vXIPu&format=png&color=000000" className="w-8" />
             </a>
             <a>
-              <img src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=000000" className="w-10"  />
+              <img src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=000000" className="w-8"  />
             </a>
             <a>
-            <img src="https://img.icons8.com/?size=100&id=19318&format=png&color=000000" className="w-10"  />
+            <img src="https://img.icons8.com/?size=100&id=19318&format=png&color=000000" className="w-9"  />
             </a>
           </div>
         </nav>
