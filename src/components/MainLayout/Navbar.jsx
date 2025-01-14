@@ -58,8 +58,8 @@ const Navbar = () => {
             className="btn btn-ghost max-sm:btn-sm text-lg max-sm:text-base "
           >
             <img
-              className="w-8 h-8 max-sm:hidden"
-              src="./src/assets/logo.png"
+              className="w-10 max-sm:hidden"
+              src="https://img.icons8.com/?size=100&id=9ECnYpBa4VDd&format=png&color=000000"
               alt=""
             />
             Skyline Resident{" "}
