@@ -7,21 +7,21 @@ const DiscoverOurLocation = () => {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3  gap-4 my-4">
         {/* div 1 */}
-        <div className="card bg-base-100  shadow-xl">
+        <div className="card bg-slate-100  shadow-xl">
           <div className="card-body">
             <h2 className="card-title"><img src="https://img.icons8.com/?size=100&id=103775&format=png&color=000000" className="w-6" /> +880 1102384589</h2>
             <p className="font-light ">Call now to book an appointment!</p>            
           </div>
         </div>
         {/* div 2 */}
-        <div className="card bg-base-100  shadow-xl">
+        <div className="card bg-slate-100  shadow-xl">
           <div className="card-body">
             <h2 className="card-title"><img src="https://img.icons8.com/?size=100&id=42050&format=png&color=000000" className="w-6" /> abc@sky.com</h2>
             <p className="font-light">Any queries? Just send us an email with your thoughts!</p>            
           </div>
         </div>
         {/* div 3*/}
-        <div className="card bg-base-100  shadow-xl">
+        <div className="card bg-slate-100  shadow-xl">
           <div className="card-body">
             <h2 className="card-title"><img src="https://img.icons8.com/?size=100&id=13800&format=png&color=000000" className="w-6" /> Gulshan-1, Dhaka.</h2>
             <p className="font-light">City living meets tranquil haven at Skyline Resident!</p>            

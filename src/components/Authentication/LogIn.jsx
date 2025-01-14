@@ -7,11 +7,15 @@ import login from "../../assets/login.gif";
 
 
 const Login = () => {
-  const { userLogin, setUser, signInWithGoogle } = useContext(AuthContext);
+  const {user, userLogin, setUser, signInWithGoogle } = useContext(AuthContext);
   const [error, setError] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
-  
+
+  if(user?.email){
+    return navigate(location?.state ? location.state : "/") 
+  }
+
   const handelSubmit = (e) =>{
     e.preventDefault();
     const form = e.target;
@@ -56,7 +60,7 @@ const Login = () => {
 <h2 className="text-2xl font-semibold  text-center mb-6 ">Login To Your Account</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center">
       <img src={login} className="w-[70%] max-sm:w-[50%] mx-auto my-auto" ></img>
-      <div className="card card-compact bg-slate-50 border-2 w-[70%] max-sm:mx-auto shrink-0 p-6">
+      <div className="card card-compact bg-slate-50 border-2 w-[70%] max-sm:mx-auto shrink-0 p-6 mx-auto">
         <form onSubmit={handelSubmit} className="card-body">
           <div className="form-control">
             <label className="label">

@@ -5,10 +5,13 @@ import Swal from "sweetalert2";
 import register from "../../assets/register.gif";
 
 const Register = () => {
-  const { setUser, createNewUser, updateUserProfile, signInWithGoogle } = useContext(AuthContext);
+  const { user, setUser, createNewUser, updateUserProfile, signInWithGoogle } = useContext(AuthContext);
   const [error, setError] = useState({});
   const navigate = useNavigate();
 
+  if(user?.email){
+    return navigate(location?.state ? location.state : "/") 
+  }
   const handelSubmit = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -80,13 +83,13 @@ const Register = () => {
   return (
     <div>
       <div className=" justify-center bg-white items-center py-10">
-        <h2 className="text-2xl font-semibold pt-2 text-center mb-6 ">
+        <h2 className="text-2xl font-semibold  text-center mb-6 ">
           Register Your Account
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center">
           <img src={register} className="w-[70%] max-sm:w-[50%] mx-auto my-auto"></img>
 
-          <div className="card card-compact bg-slate-50 border-2 w-[70%] max-sm:mx-auto shrink-0 p-6">
+          <div className="card card-compact bg-slate-50 border-2 w-[70%] mx-auto shrink-0 p-6">
             <form onSubmit={handelSubmit} className="card-body">
               <div className="form-control">
                 <label className="label">
