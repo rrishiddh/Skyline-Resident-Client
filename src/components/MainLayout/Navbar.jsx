@@ -1,10 +1,24 @@
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Authentication/AuthProvider";
+import { useContext } from "react";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut().then(() => {
+      window.location.href = "/";
+    });
+  };
   const navOption = (
     <>
       <li>
-        <NavLink to="/" style={({ isActive }) => ({ backgroundColor: isActive ? '#71C9CE' : 'transparent', color: 'black' })}>
+        <NavLink
+          to="/"
+          style={({ isActive }) => ({
+            backgroundColor: isActive ? "#71C9CE" : "transparent",
+            color: "black",
+          })}
+        >
           <img
             src="https://img.icons8.com/?size=100&id=103103&format=png&color=000000"
             className="w-5 h-5"
@@ -13,7 +27,13 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/apartment" style={({ isActive }) => ({ backgroundColor: isActive ? '#71C9CE' : 'transparent', color: 'black' })} >
+        <NavLink
+          to="/apartment"
+          style={({ isActive }) => ({
+            backgroundColor: isActive ? "#71C9CE" : "transparent",
+            color: "black",
+          })}
+        >
           <img
             src="https://img.icons8.com/?size=100&id=KsuSWBKCp2X2&format=png&color=000000"
             className="w-5 h-5"
@@ -21,7 +41,6 @@ const Navbar = () => {
           Apartment
         </NavLink>
       </li>
-     
     </>
   );
   return (
@@ -65,16 +84,51 @@ const Navbar = () => {
             Skyline Resident{" "}
           </Link>
         </div>
-       
 
-        <div className="navbar-end space-x-2">      
-        <ul className="menu menu-horizontal space-x-2 px-1 text-xs hidden lg:flex">
+        <div className="navbar-end space-x-2">
+          <ul className="menu menu-horizontal space-x-2 px-1 text-xs hidden lg:flex">
             {navOption}
           </ul>
-          <figure className="cursor-pointer avatar ring-slate-400 ring-offset-base-100 w-8 rounded-full ring ring-offset-1">
-
-       <img src="https://img.icons8.com/?size=100&id=24220&format=png&color=000000" className="w-6 " />
-          </figure>
+          {user && user?.email ? (
+            <div className="dropdown dropdown-hover dropdown-left ">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost  btn-circle avatar "
+              >
+                <div className=" cursor-pointer avatar ring-primary ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
+                  <img src={user?.photoURL} referrerPolicy="no-referrer" />
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow mt-6"
+                >
+                    <p> Welcome, {user?.displayName}!</p>
+                  <li>
+                    <Link to="/">Dashboard</Link>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleLogOut}
+                      className="btn btn-sm text-xs mx-auto w-full"
+                    >
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <Link
+              to={"/auth/login"}
+              className="cursor-pointer avatar ring-slate-400 ring-offset-base-100 w-8 rounded-full ring ring-offset-1"
+            >
+              <img
+                src="https://img.icons8.com/?size=100&id=24220&format=png&color=000000"
+                className="w-6 "
+              />
+            </Link>
+          )}
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ const Coupon = () => {
   return (
     <div className="my-10 w-[90%] mx-auto">
       <h1 className="text-center text-2xl font-bold mb-3">Coupon </h1>
-      <p className="mx-auto max-sm:w-[80%] text-center mb-6">Experience the perks of living at Skyline Resident with exclusive coupons!</p>
+      <p className="mx-auto max-sm:w-[85%] max-sm:text-justify text-center mb-6">Experience the perks of living at Skyline Resident with exclusive coupons!</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
         <div className="card bg-base-200  shadow-xl">

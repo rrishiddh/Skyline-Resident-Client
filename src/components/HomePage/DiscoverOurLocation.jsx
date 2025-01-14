@@ -2,10 +2,10 @@ const DiscoverOurLocation = () => {
   return (
     <div className="my-10 w-[90%] mx-auto">
       <h1 className="text-center text-2xl font-bold mb-3">Discover Our Location</h1>
-      <p className="mx-auto max-sm:w-[80%] text-center mb-6">
+      <p className="mx-auto max-sm:w-[85%] max-sm:text-justify text-center mb-6">
         Skyline Resident is situated in close proximity to Gulshan-1 Circle. Conveniently accessible from both the Badda and Mohakhali bus stops, our property offers excellent connectivity for residents!
       </p>
-      <div className="grid grid-cols-3 gap-4 my-4">
+      <div className="grid grid-cols-1 md:grid-cols-3  gap-4 my-4">
         {/* div 1 */}
         <div className="card bg-base-100  shadow-xl">
           <div className="card-body">
