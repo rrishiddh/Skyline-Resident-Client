@@ -3,7 +3,8 @@ import MySwiper from "./MySwiper";
 const AboutBuilding = () => {
   return (
     <div className="my-10 w-[90%] mx-auto">
-      <h1 className="text-center text-2xl font-bold mb-5">About Skyline Resident</h1>
+      <h1 className="text-center text-2xl font-bold mb-3">About Skyline Resident</h1>
+      <p className="mx-auto max-sm:w-[80%] text-center mb-6">Experience elevated living with stunning views and a range of exclusive amenities at Skyline Resident!</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 overflow-x-clip">
         <div className="text-justify">
           <ul className="list-disc list-inside font-light">            
