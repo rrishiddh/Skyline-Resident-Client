@@ -3,17 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import Swal from "sweetalert2";
 import register from "../../assets/register.gif";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+import axios from "axios";
 
 const Register = () => {
   const { user, setUser, createNewUser, updateUserProfile, signInWithGoogle, logOut } = useContext(AuthContext);
   const [error, setError] = useState({});
   const navigate = useNavigate();
-  const axiosPublic = useAxiosPublic();
 
   if(user?.email){
     return navigate(location?.state ? location.state : "/") 
   }
+ 
   const handelSubmit = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -21,38 +21,35 @@ const Register = () => {
     const photo = form.get("photo");
     const email = form.get("email");
     const password = form.get("password");
-
+  
     const passwordError = validatePassword(password);
     if (passwordError) {
       setError({ ...error, password: passwordError });
       return;
     }
-
+  
     createNewUser(email, password)
       .then((result) => {
         const user = result.user;
         setUser(user);
         updateUserProfile({ displayName: name, photoURL: photo })
           .then(() => {
-            const userInfo ={
+            const userInfo = {
               userName: name,
               userEmail: email,
-
-            }
-            axiosPublic.post('/users',userInfo)
-            .then( res=>{
-              if(res.data.insertedId){
+            };
+  
+            axios.post("http://localhost:3000/users", userInfo).then((res) => {
+              if (res.data.insertedId) {
                 Swal.fire({
-                  title: `Successfully Register! Welcome ${user.displayName}`,
+                  title: `Welcome ${name}!`,
                   text: `Please Login Now!`,
                   icon: "success",
                 });
-                logOut();
-                navigate("/");
-
               }
-            })
-           
+              navigate(location?.state ? location.state : "/");
+              logOut(); 
+            });
           })
           .catch((err) => {
             setError({ ...error, register: err.code });
@@ -63,35 +60,36 @@ const Register = () => {
         setError({ ...error, register: errorCode });
       });
   };
-
+  
   const handelGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
         setUser(user);
-        const userInfo ={
+  
+        const userInfo = {
           userName: user.displayName,
           userEmail: user.email,
-        }
-        axiosPublic.post('/users',userInfo)
-        .then( res=>{
-          if(res.data.insertedId){
+        };
+  
+        axios.post("http://localhost:3000/users", userInfo).then((res) => {
+          if (res.data.insertedId) {
             Swal.fire({
-              title: `Successfully Register! Welcome ${user.displayName}`,
-              text: `Please Login Now!`,
+              title:  `Welcome, ${user.displayName}!`,
+              text: `Please Login Now`,
               icon: "success",
             });
-            logOut();
-            navigate(location?.state ? location.state : "/");
-
-          }
-        })
+          } 
+          logOut();
+          navigate(location?.state ? location.state : "/");
+        });
       })
       .catch((error) => {
         const errorCode = error.code;
         setError({ ...error, register: errorCode });
       });
   };
+  
 
   const validatePassword = (password) => {
     if (password.length < 6) {

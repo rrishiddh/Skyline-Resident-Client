@@ -1,19 +1,77 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
+import { AuthContext } from "../Authentication/AuthProvider";
+import { useContext } from "react";
 
 const Dashboard = () => {
-  const isMember = false;
+    const {  logOut } = useContext(AuthContext);
+    const navigate = useNavigate()
+
+    const handleLogOut = () => {
+      logOut().then(() => {
+        navigate("/");
+      });
+    };
+  
+  // const isMember = false;
+
+  const [isAdmin] = useAdmin();
 
   const navOption = (
+    // <>
+    //   {isMember ? (
+    //     ""
+    //   ) : (
+    //     <>
+    //       <li>
+    //         <NavLink to="/dashboard/profile">My Profile</NavLink>
+    //       </li>
+    //       <li>
+    //         <NavLink to="/dashboard/announcements">My Announcements</NavLink>
+    //       </li>
+    //     </>
+    //   )}
+    // </>
+
     <>
-      {isMember ? (
-        ""
-      ) : (
+      {isAdmin ? (
         <>
           <li>
-            <NavLink to="/dashboard/profile">My Profile</NavLink>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/announcements">My Announcements</NavLink>
+            <NavLink to="/dashboard/admin-profile">Admin Profile</NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/manage-members">Manage Members</NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/agreement-requests">Agreement Requests</NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/manage-coupons">Manage Coupons</NavLink>
+          </li>
+          <li>
+            <button
+              onClick={handleLogOut}
+              className="btn btn-sm btn-info text-xs mx-auto w-full"
+            >
+              Logout
+            </button>
+          </li>
+        </>
+      ) : (
+        <>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+            <button
+              onClick={handleLogOut}
+              className="btn btn-sm btn-info text-xs mx-auto w-full"
+            >
+              Logout
+            </button>
           </li>
         </>
       )}
@@ -27,7 +85,7 @@ const Dashboard = () => {
         {/* Navbar */}
         <div>
           <div className="navbar bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] text-black  px-5  max-sm:pb-3 w-full">
-            <div className="flex-none lg:hidden">
+            <div className="flex-none ">
               <label
                 htmlFor="my-drawer-3"
                 aria-label="open sidebar"

@@ -10,6 +10,9 @@ import Dashboard from "../components/Dashboard/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import MyProfile from "../components/Dashboard/MyProfile";
 import Announcements from "../components/Dashboard/Announcements";
+import ManageMembers from "../components/Dashboard/ManageMembers";
+import AdminRoute from "./AdminRoute";
+import AdminProfile from "../components/Dashboard/AdminProfile";
 
 const router = createBrowserRouter([
     {
@@ -52,7 +55,15 @@ const router = createBrowserRouter([
         {
           path: 'announcements',
           element: <Announcements></Announcements>,
-        }
+        },
+        {
+          path: 'admin-profile',
+          element: <AdminRoute><AdminProfile></AdminProfile> </AdminRoute>,
+        },
+        {
+          path: 'manage-members',
+          element: <AdminRoute><ManageMembers></ManageMembers></AdminRoute>,
+        },
       ]
     }
   ]);

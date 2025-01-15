@@ -1,12 +1,13 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Authentication/AuthProvider";
 import { useContext } from "react";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate()
   const handleLogOut = () => {
     logOut().then(() => {
-      window.location.href = "/";
+      navigate("/");
     });
   };
   const navOption = (
@@ -105,7 +106,7 @@ const Navbar = () => {
                 >
                     <p> Welcome, {user?.displayName}!</p>
                   <li>
-                    <Link to="dashboard/profile">Dashboard</Link>
+                    <Link to="dashboard">Dashboard</Link>
                   </li>
                   <li>
                     <button
