@@ -30,7 +30,7 @@ const DiscoverOurLocation = () => {
       </div>
 
       <div className="items-center mt-6 ">              
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.0703717837773!2d90.41366137362544!3d23.780508287623014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c79c1fc0be71%3A0x40f0e2b548db81b3!2sNavana%20Tower!5e0!3m2!1sen!2sbd!4v1736840205748!5m2!1sen!2sbd" className="h-[100%] w-[100%] rounded-xl ring ring-gray-700 ring-offset-2"  allowFullScreen="true" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.0703717837773!2d90.41366137362544!3d23.780508287623014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c79c1fc0be71%3A0x40f0e2b548db81b3!2sNavana%20Tower!5e0!3m2!1sen!2sbd!4v1736840205748!5m2!1sen!2sbd" className="h-[100%] w-[100%] rounded-xl ring ring-gray-700 ring-offset-2"  allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   );

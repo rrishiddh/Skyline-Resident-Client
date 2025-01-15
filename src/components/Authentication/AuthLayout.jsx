@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 const AuthLayout = () => {
       const {user } = useContext(AuthContext);
-      console.log(user)
+      
       const navigate = useNavigate();
       if(user?.email){
         return navigate(location?.state ? location.state : "/") 

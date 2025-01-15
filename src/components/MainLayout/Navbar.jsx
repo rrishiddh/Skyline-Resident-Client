@@ -105,7 +105,7 @@ const Navbar = () => {
                 >
                     <p> Welcome, {user?.displayName}!</p>
                   <li>
-                    <Link to="/">Dashboard</Link>
+                    <Link to="dashboard/profile">Dashboard</Link>
                   </li>
                   <li>
                     <button

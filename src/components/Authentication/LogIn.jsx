@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import Swal from 'sweetalert2'
 import login from "../../assets/login.gif";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
 
@@ -42,12 +43,23 @@ const Login = () => {
     .then(result=>{
       const user = result.user;
       setUser(user)
-      Swal.fire({
-        title: "Successfully Login!",
-        text: `Welcome ${user.displayName}!`,
-        icon: "success"
-      });
-      navigate(location?.state ? location.state : "/") 
+
+
+      const userInfo ={
+                userName: user.displayName,
+                userEmail: user.email,
+              }
+              useAxiosPublic.post('/users',userInfo)
+              .then( res=>{
+                if(res.data.insertedId){
+                  Swal.fire({
+                    title: "Successfully Login!",
+                    text: `Welcome ${user.displayName}!`,
+                    icon: "success"
+                  });
+                  navigate(location?.state ? location.state : "/");      
+                }
+              })
     }).catch((err)=> {
       setError({ ...error, login: err.code })
      })
