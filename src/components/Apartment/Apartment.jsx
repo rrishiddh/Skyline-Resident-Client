@@ -1,10 +1,11 @@
 import { useContext, useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { AuthContext } from "../Authentication/AuthProvider";
 import axios from "axios";
 import Pagination from "./Pagination";
+import Swal from "sweetalert2";
 
 const Apartment = () => {
   const { user } = useContext(AuthContext);
@@ -14,6 +15,7 @@ const Apartment = () => {
   const [postsPerPage, setPostsPerPage] = useState(6);
   const [filteredApartments, setFilteredApartments] = useState([]);
   const [selectedRange, setSelectedRange] = useState("");
+  const navigate = useNavigate();
 
   const priceRanges = [
     { label: "10000 - 15000", min: 10000, max: 15000 },
@@ -23,7 +25,7 @@ const Apartment = () => {
   ];
 
   useEffect(() => {
-    const fetchReviews = async () => {
+    const fetchApartments = async () => {
       try {
         const response = await axios.get("http://localhost:3000/apartment");
         setApartmentList(response.data);
@@ -32,7 +34,7 @@ const Apartment = () => {
         console.error("Failed to fetch data:", error);
       }
     };
-    fetchReviews();
+    fetchApartments();
   }, []);
 
   const handleSearch = () => {
@@ -51,10 +53,41 @@ const Apartment = () => {
     }
   };
 
+  const handleAgreement = async (apartment) => {
+    if (!user) {
+      return navigate('/auth/login');
+    }
+
+    const agreementData = {
+      userName: user.displayName,
+      userEmail: user.email,
+      floorNo: apartment.floorNo,
+      blockName: apartment.blockName,
+      apartmentNo: apartment.apartmentNo,
+      rent: apartment.rent,
+      status: "pending",
+    };
+
+    try {
+      const response = await axios.post("http://localhost:3000/agreements", agreementData);
+      if (response.data.result.insertedId) {
+        Swal.fire({
+            title: "Agreement request submitted successfully.",
+            icon: "success",
+          });
+      }
+    } catch (error) {
+      console.error("Failed to submit agreement:", error);
+      Swal.fire({
+        title: "Already submitted agreement once!",
+        icon: "warning",
+      });
+    }
+  };
+
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
   const currentPosts = filteredApartments.slice(firstPostIndex, lastPostIndex);
-
   return (
     <div className="w-[90%] mx-auto min-h-screen my-6">
       <div>
@@ -77,10 +110,7 @@ const Apartment = () => {
             </option>
           ))}
         </select>
-        <button
-          onClick={handleSearch}
-          className="btn btn-primary"
-        >
+        <button onClick={handleSearch} className="btn btn-primary">
           Search
         </button>
       </div>
@@ -95,10 +125,7 @@ const Apartment = () => {
                 className="card card-compact mx-auto bg-slate-100 shadow-xl grid-cols-1 grid "
               >
                 <figure>
-                  <img
-                    src={apartment.imageUrl}
-                    alt={apartment.floorNo}
-                  />
+                  <img src={apartment.imageUrl} alt={apartment.floorNo} />
                 </figure>
                 <div className="card-body text-justify">
                   <h2 className="card-title">Floor No : {apartment.floorNo}</h2>
@@ -111,7 +138,10 @@ const Apartment = () => {
                   </p>
                   <div className="card-actions justify-end">
                     {user && user?.email ? (
-                      <button className="btn btn-sm btn-ghost text-xs bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] hover:from-[#b9dcdf] hover:to-[#87b9bd] border-blue-400">
+                      <button
+                        onClick={() => handleAgreement(apartment)}
+                        className="btn btn-sm btn-ghost text-xs bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] hover:from-[#b9dcdf] hover:to-[#87b9bd] border-blue-400"
+                      >
                         Agreement
                       </button>
                     ) : (
