@@ -2,6 +2,7 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import { AuthContext } from "../Authentication/AuthProvider";
 import { useContext } from "react";
+import useMember from "../hooks/useMember";
 
 const Dashboard = () => {
     const {  logOut } = useContext(AuthContext);
@@ -16,23 +17,10 @@ const Dashboard = () => {
   // const isMember = false;
 
   const [isAdmin] = useAdmin();
+  const [isMember] = useMember();
+
 
   const navOption = (
-    // <>
-    //   {isMember ? (
-    //     ""
-    //   ) : (
-    //     <>
-    //       <li>
-    //         <NavLink to="/dashboard/profile">My Profile</NavLink>
-    //       </li>
-    //       <li>
-    //         <NavLink to="/dashboard/announcements">My Announcements</NavLink>
-    //       </li>
-    //     </>
-    //   )}
-    // </>
-
     <>
       {isAdmin ? (
         <>
@@ -65,6 +53,35 @@ const Dashboard = () => {
         </>
       ) : (
         <>
+        {
+          isMember? (
+            <>
+        <li>
+          <NavLink to="/">Main Website</NavLink>
+        </li>
+        <li>
+            <NavLink to="/dashboard/profile">My Profile</NavLink>
+          </li>
+        <li>
+            <NavLink to="/dashboard/make-payment">Make payment</NavLink>
+          </li>
+        <li>
+            <NavLink to="/dashboard/payment-history">Payment History</NavLink>
+          </li>
+        <li>
+            <NavLink to="/dashboard/announcements">Announcements</NavLink>
+          </li>
+        <li>
+            <button
+              onClick={handleLogOut}
+              className="btn btn-sm btn-info text-xs mx-auto w-full"
+            >
+              Logout
+            </button>
+          </li>
+        </>
+          ) : ( 
+            <>
         <li>
           <NavLink to="/">Main Website</NavLink>
         </li>
@@ -79,6 +96,9 @@ const Dashboard = () => {
               Logout
             </button>
           </li>
+        </>
+          )
+        }
         </>
       )}
     </>

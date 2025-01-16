@@ -1,10 +1,11 @@
-
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import useAuth from "../hooks/useAuth";
 
 const ManageMembers = () => {
   const axiosSecure = useAxiosSecure();
+  const {user: admin} = useAuth();
 
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
@@ -15,20 +16,20 @@ const ManageMembers = () => {
   });
 
   const handleRemoveMember = async (id) => {
-      axiosSecure.patch(`/users/admin/${id}`)
-      .then(res=>{
-        if (res.data.modifiedCount > 0) {
-            Swal.fire({
-              title: "Member Removed!",
-              text: "That member is now just a normal user!",
-              icon: "success",
-            });
-            refetch(); 
-          }
-      })
-     
-     
+    axiosSecure.patch(`/users/admin/${id}`).then((res) => {
+      if (res.data.modifiedCount > 0) {
+        Swal.fire({
+          title: "Member Removed!",
+          text: "That member is now just a normal user!",
+          icon: "success",
+        });
+        refetch();
+      }
+    });
   };
+  const filteredUsers = users.filter(
+    (user) => user.userEmail !== admin.email
+  );
 
   return (
     <div className="w-[90%] mx-auto my-6">
@@ -37,10 +38,9 @@ const ManageMembers = () => {
         Find out all members data from here!
       </p>
 
-
-      {users.length ? (
+      {filteredUsers.length ? (
         <div className="overflow-x-auto w-[90%] mx-auto">
-  <table className="table ">
+          <table className="table ">
             <thead>
               <tr>
                 <th></th>
@@ -51,7 +51,7 @@ const ManageMembers = () => {
               </tr>
             </thead>
             <tbody>
-              {users.map((user, idx) => (
+              {filteredUsers.map((user, idx) => (
                 <tr key={user._id}>
                   <th>{idx + 1}</th>
                   <td>{user.userName}</td>
@@ -76,7 +76,6 @@ const ManageMembers = () => {
                 </tr>
               ))}
             </tbody>
-            
           </table>
         </div>
       ) : (

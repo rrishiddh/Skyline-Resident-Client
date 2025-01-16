@@ -16,6 +16,8 @@ import AdminProfile from "../components/Dashboard/AdminProfile";
 import MakeAnnouncement from "../components/Dashboard/MakeAnnouncement";
 import ManageCoupon from "../components/Dashboard/ManageCoupon";
 import AgreementRequests from "../components/Dashboard/AgreementRequests";
+import MakePayment from "../components/Dashboard/MakePayment";
+import PaymentHistory from "../components/Dashboard/PaymentHistory";
 
 const router = createBrowserRouter([
     {
@@ -59,6 +61,15 @@ const router = createBrowserRouter([
         {
           path: 'announcements',
           element: <Announcements></Announcements>,
+        },
+        // member 
+        {
+          path: 'make-payment',
+          element: <MakePayment></MakePayment>,
+        },
+        {
+          path: 'payment-history',
+          element: <PaymentHistory></PaymentHistory>,
         },
         // admin route 
         {
