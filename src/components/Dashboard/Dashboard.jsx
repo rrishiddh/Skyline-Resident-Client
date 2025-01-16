@@ -69,6 +69,9 @@ const Dashboard = () => {
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
+            <NavLink to="/dashboard/announcements">Announcements</NavLink>
+          </li>
+        <li>
             <button
               onClick={handleLogOut}
               className="btn btn-sm btn-info text-xs mx-auto w-full"
