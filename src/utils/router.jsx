@@ -14,6 +14,8 @@ import ManageMembers from "../components/Dashboard/ManageMembers";
 import AdminRoute from "./AdminRoute";
 import AdminProfile from "../components/Dashboard/AdminProfile";
 import MakeAnnouncement from "../components/Dashboard/MakeAnnouncement";
+import ManageCoupon from "../components/Dashboard/ManageCoupon";
+import AgreementRequests from "../components/Dashboard/AgreementRequests";
 
 const router = createBrowserRouter([
     {
@@ -70,6 +72,14 @@ const router = createBrowserRouter([
         {
           path: 'make-announcement',
           element: <AdminRoute><MakeAnnouncement></MakeAnnouncement></AdminRoute>,
+        },
+        {
+          path: 'agreement-requests',
+          element: <AdminRoute><AgreementRequests></AgreementRequests></AdminRoute>,
+        },
+        {
+          path: 'manage-coupons',
+          element: <AdminRoute><ManageCoupon></ManageCoupon></AdminRoute>,
         },
       ]
     }
