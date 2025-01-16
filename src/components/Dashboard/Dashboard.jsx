@@ -46,6 +46,9 @@ const Dashboard = () => {
             <NavLink to="/dashboard/manage-members">Manage Members</NavLink>
           </li>
           <li>
+            <NavLink to="/dashboard/make-announcement">Make Announcement</NavLink>
+          </li>
+          <li>
             <NavLink to="/dashboard/agreement-requests">Agreement Requests</NavLink>
           </li>
           <li>

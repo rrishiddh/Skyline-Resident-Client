@@ -1,9 +1,12 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Authentication/AuthProvider";
 import { useContext } from "react";
+import useAdmin from "../hooks/useAdmin";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
+
   const navigate = useNavigate()
   const handleLogOut = () => {
     logOut().then(() => {
@@ -105,9 +108,16 @@ const Navbar = () => {
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow mt-6"
                 >
                     <p> Welcome, {user?.displayName}!</p>
-                  <li>
-                    <Link to="dashboard">Dashboard</Link>
+                  {
+                    user && isAdmin && <li>
+                    <Link to="dashboard/admin-profile">Dashboard</Link>
                   </li>
+                  }
+                  {
+                    user && (!isAdmin) && <li>
+                    <Link to="dashboard/profile">Dashboard</Link>
+                  </li>
+                  }
                   <li>
                     <button
                       onClick={handleLogOut}

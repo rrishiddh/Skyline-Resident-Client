@@ -13,6 +13,7 @@ import Announcements from "../components/Dashboard/Announcements";
 import ManageMembers from "../components/Dashboard/ManageMembers";
 import AdminRoute from "./AdminRoute";
 import AdminProfile from "../components/Dashboard/AdminProfile";
+import MakeAnnouncement from "../components/Dashboard/MakeAnnouncement";
 
 const router = createBrowserRouter([
     {
@@ -48,6 +49,7 @@ const router = createBrowserRouter([
       path : "dashboard",
       element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute> ,
       children :[
+        // user 
         {
           path: 'profile',
           element: <MyProfile></MyProfile>,
@@ -56,6 +58,7 @@ const router = createBrowserRouter([
           path: 'announcements',
           element: <Announcements></Announcements>,
         },
+        // admin route 
         {
           path: 'admin-profile',
           element: <AdminRoute><AdminProfile></AdminProfile> </AdminRoute>,
@@ -63,6 +66,10 @@ const router = createBrowserRouter([
         {
           path: 'manage-members',
           element: <AdminRoute><ManageMembers></ManageMembers></AdminRoute>,
+        },
+        {
+          path: 'make-announcement',
+          element: <AdminRoute><MakeAnnouncement></MakeAnnouncement></AdminRoute>,
         },
       ]
     }
