@@ -7,7 +7,7 @@ const MyProfile = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
 
-  const { data: agreementDetails = [], isLoading, isError } = useQuery({
+  const { data: agreementDetails = []} = useQuery({
     queryKey: ["agreementDetails"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/agreements/${user?.email}`);
@@ -15,16 +15,6 @@ const MyProfile = () => {
     },
   });
 
-//   if (isLoading) {
-//     return <div>Loading...</div>;
-//   }
-
-//   if (isError) {
-//     return <div>Error fetching agreement details.</div>;
-//   }
-
-
-  
   return (
     <div className="w-[90%] mx-auto my-6">
       <h2 className="text-center text-2xl font-bold mb-3"> My Profile</h2>

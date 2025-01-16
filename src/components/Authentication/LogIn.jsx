@@ -52,7 +52,6 @@ const Login = () => {
           if (res.data.insertedId) {
             Swal.fire({
               title:  `Welcome, ${user.displayName}!`,
-              text: `Please Login Now`,
               icon: "success",
             });
           } 

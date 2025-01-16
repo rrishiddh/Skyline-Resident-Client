@@ -27,7 +27,7 @@ const MakeAnnouncement = () => {
       <h1 className="text-center text-2xl font-bold mb-3">
         Make An Announcement
       </h1>
-      <p className="mx-auto max-sm:w-[85%] text-center mb-6">Here ou can write a post, which will be valuable for members or users!</p>
+      <p className="mx-auto max-sm:w-[85%] text-center mb-6">Here you can write a post, which will be valuable for members or users!</p>
 
       <div className="card bg-base-200  shadow-xl w-[70%] md:w-[50%] mx-auto p-4">
         <form onSubmit={handleSubmit(onSubmit)}>

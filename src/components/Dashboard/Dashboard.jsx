@@ -14,8 +14,6 @@ const Dashboard = () => {
       });
     };
   
-  // const isMember = false;
-
   const [isAdmin] = useAdmin();
   const [isMember] = useMember();
 
