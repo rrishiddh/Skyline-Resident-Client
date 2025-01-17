@@ -75,7 +75,6 @@ const MakePayment = () => {
       axiosSecure
         .post("/create-payment-intent", { rent: rentAmount })
         .then((res) => {
-        //   console.log(res.data.clientSecret);
           setClientSecret(res.data.clientSecret);
         })
         .catch((error) => {
@@ -155,14 +154,14 @@ const MakePayment = () => {
 
     return (
       <form onSubmit={handleSubmit}>
-        <CardElement className="border-2 rounded-xl px-2 py-4"
+        <CardElement className="border-2 bg-white rounded-xl px-2 py-4"
           options={{
             style: {
               base: {
-                fontSize: "16px",
+                fontSize: "14px",
                 color: "#424770",
                 "::placeholder": {
-                  color: "#aab7c4",
+                  color: "black",
                 },
               },
               invalid: {
@@ -278,7 +277,7 @@ const MakePayment = () => {
 
       {isModalOpen && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-5 rounded-md w-[90%] max-w-lg relative">
+          <div className="bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] text-black p-5 rounded-md w-[90%] max-w-lg relative">
             <h3 className="text-xl max-sm:text-lg font-bold mb-4">Complete Your Payment</h3>
             <div className="mt-4">
             <div className="label">

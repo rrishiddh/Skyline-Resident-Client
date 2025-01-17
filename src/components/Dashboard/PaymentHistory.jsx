@@ -1,10 +1,27 @@
+import { useContext } from "react";
+import { AuthContext } from "../Authentication/AuthProvider";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const PaymentHistory = () => {
+  const axiosSecure = useAxiosSecure();
+  const { user } = useContext(AuthContext);
+  
+
+  const { data: allPayments = {} } = useQuery({
+    queryKey: ["allPayments"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/makePayment/${user?.email}`);
+      return res.data;
+    },
+  });
+console.log(allPayments)
+
     return (
         <div className="w-[90%] mx-auto my-6">
-      <h2 className="text-center text-2xl font-bold mb-3">Manage Coupons</h2>
+      <h2 className="text-center text-2xl font-bold mb-3">Payment History</h2>
       <p className="mx-auto max-sm:w-[85%] text-center mb-6">
-        Manage all coupons from here!
+        Checkout your previous payments from here!
       </p>
 
     
@@ -12,34 +29,26 @@ const PaymentHistory = () => {
         <table className="table">
           <thead>
             <tr>
-              <th></th>
-              <td>Coupon Code</td>
-              <td>Discount Percentage</td>
-              <td>Coupon Description</td>
-              <td>Availability</td>
-              <td>Change Availability</td>
+              <td>Apartment No</td>
+              <td>Block Name</td>
+              <td>Floor No</td>
+              <td>Payment ID</td>
+              <td>Month</td>
+              <td>Rent</td>
+              <td>Status</td>
             </tr>
           </thead>
           <tbody>
-            {/* {allCoupons.map((coupon, idx) => ( */}
-              <tr key={coupon._id}>
-                <th>{idx + 1}</th>
-                <td>{coupon.code}</td>
-                <td>{coupon.discountPercentage}%</td>
-                <td>{coupon.couponDescription}</td>
-                <td>{coupon.available}</td>
-                <td>
-                  <select
-                    className="select select-bordered"
-                    value={coupon.available}
-                   
-                  >
-                    <option value="Available">Available</option>
-                    <option value="Unavailable">Unavailable</option>
-                  </select>
-                </td>
+              <tr >
+                <td>{allPayments.apartmentNo || "N/A"}</td>
+                <td>{allPayments.blockName  || "N/A"}</td>
+                <td>{allPayments.floorNo  || "N/A"}</td>
+                <td>{allPayments.paymentId  || "N/A"}</td>
+                <td>{allPayments.month  || "N/A"}</td>
+                <td>{allPayments.rent  || "N/A"}</td>
+                <td>{allPayments.status  || "N/A"}</td>
+                
               </tr>
-            ))}
           </tbody>
         </table>
     

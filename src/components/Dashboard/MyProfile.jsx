@@ -53,7 +53,7 @@ const MyProfile = () => {
                 </li>
                 <li>Floor: {agreementDetails.floorNo || "N/A"}</li>
                 <li>Block: {agreementDetails.blockName || "N/A"}</li>
-                <li>Apartment No.: {agreementDetails.apartmentNo || "N/A"}</li>
+                <li>Apartment No: {agreementDetails.apartmentNo || "N/A"}</li>
               </ul>
             </>
           ) : (
