@@ -7,7 +7,6 @@ const MakeAnnouncement = () => {
 
   const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
-    console.log(data);
     const announcement = {
       category: data.category,
       title: data.title,

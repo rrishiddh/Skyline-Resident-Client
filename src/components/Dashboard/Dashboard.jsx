@@ -43,7 +43,7 @@ const Dashboard = () => {
           <li>
             <button
               onClick={handleLogOut}
-              className="btn btn-sm btn-info text-xs mx-auto w-full"
+              className="btn btn-sm btn-ghost text-xs mx-auto ml-1"
             >
               Logout
             </button>
@@ -72,7 +72,7 @@ const Dashboard = () => {
         <li>
             <button
               onClick={handleLogOut}
-              className="btn btn-sm btn-info text-xs mx-auto w-full"
+              className="btn btn-sm btn-ghost text-xs mx-auto ml-1"
             >
               Logout
             </button>
@@ -89,7 +89,7 @@ const Dashboard = () => {
         <li>
             <button
               onClick={handleLogOut}
-              className="btn btn-sm btn-info text-xs mx-auto w-full"
+              className="btn btn-sm btn-ghost text-xs mx-auto ml-1"
             >
               Logout
             </button>

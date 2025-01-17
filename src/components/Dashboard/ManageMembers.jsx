@@ -28,8 +28,9 @@ const ManageMembers = () => {
     });
   };
   const filteredUsers = users.filter(
-    (user) => user.userEmail !== admin.email
+    (user) => user.userEmail !== admin.email && user.role !== "user"
   );
+  
 
   return (
     <div className="w-[90%] mx-auto my-6">
@@ -39,7 +40,7 @@ const ManageMembers = () => {
       </p>
 
       {filteredUsers.length ? (
-        <div className="overflow-x-auto w-[90%] mx-auto">
+        <div className="overflow-x-auto">
           <table className="table ">
             <thead>
               <tr>
@@ -47,12 +48,11 @@ const ManageMembers = () => {
                 <td>User Name</td>
                 <td>User Email</td>
                 <td>Remove Member</td>
-                <th></th>
               </tr>
             </thead>
             <tbody>
               {filteredUsers.map((user, idx) => (
-                <tr key={user._id}>
+                <tr key={user._id} className="hover">
                   <th>{idx + 1}</th>
                   <td>{user.userName}</td>
                   <td>{user.userEmail}</td>
