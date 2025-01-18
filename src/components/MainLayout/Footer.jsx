@@ -5,7 +5,7 @@ const Footer = () => {
         <aside className="grid-flow-col items-center">
           <img src="https://img.icons8.com/?size=100&id=9ECnYpBa4VDd&format=png&color=000000" className="w-10" />
           <p>
-          Skyline Resident - Where Comfort Meets Community!
+          <span className="tinos font-bold md:text-lg">Skyline Resident - Where Comfort Meets Community!</span>
             <br />
         Copyright © {new Date().getFullYear()} - All right reserved by Skyline Resident
 

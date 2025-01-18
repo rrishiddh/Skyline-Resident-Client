@@ -194,7 +194,7 @@ const MakePayment = () => {
 
   return (
     <div className="my-6 w-[90%] mx-auto">
-      <h1 className="text-center text-2xl font-bold mb-3">Make Payment</h1>
+      <h1 className="text-center text-2xl font-bold mb-3 tinos">Make Payment</h1>
       <p className="mx-auto max-sm:w-[85%] text-center mb-6">
         Pay your apartment rent from here!
       </p>

@@ -23,7 +23,7 @@ const MakeAnnouncement = () => {
 
   return (
     <div className="my-6 w-[90%] mx-auto">
-      <h1 className="text-center text-2xl font-bold mb-3">
+      <h1 className="text-center text-2xl font-bold mb-3 tinos">
         Make An Announcement
       </h1>
       <p className="mx-auto max-sm:w-[85%] text-center mb-6">Here you can write a post, which will be valuable for members or users!</p>

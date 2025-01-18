@@ -18,7 +18,7 @@ const Announcements = () => {
 
   return (
     <div className="w-[90%] mx-auto my-6">
-      <h2 className="text-center text-2xl font-bold mb-3"> Announcements </h2>
+      <h2 className="text-center text-2xl font-bold mb-3 tinos"> Announcements </h2>
       <p className="mx-auto max-sm:w-[85%] text-center mb-6">Checkout Some Latest Announcements From The Owner!</p>
 
       {

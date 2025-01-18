@@ -43,7 +43,7 @@ const Dashboard = () => {
           <li>
             <button
               onClick={handleLogOut}
-              className="btn btn-sm btn-ghost text-xs mx-auto ml-1"
+              className="btn btn-sm btn-ghost mx-auto ml-1"
             >
               Logout
             </button>
@@ -72,7 +72,7 @@ const Dashboard = () => {
         <li>
             <button
               onClick={handleLogOut}
-              className="btn btn-sm btn-ghost text-xs mx-auto ml-1"
+              className="btn btn-sm btn-ghost  mx-auto ml-1"
             >
               Logout
             </button>
@@ -89,7 +89,7 @@ const Dashboard = () => {
         <li>
             <button
               onClick={handleLogOut}
-              className="btn btn-sm btn-ghost text-xs mx-auto ml-1"
+              className="btn btn-sm btn-ghost  mx-auto ml-1"
             >
               Logout
             </button>
@@ -130,7 +130,7 @@ const Dashboard = () => {
                 </svg>
               </label>
             </div>
-            <div className="mx-2 flex-1 px-2 text-lg font-bold">Dashboard</div>
+            <div className="mx-2 flex-1 px-2 text-lg font-bold handlee">Dashboard</div>
             <div className="hidden flex-none lg:block">
               <ul className="menu menu-horizontal text-sm">
                 {/* Navbar menu content here */}

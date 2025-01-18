@@ -67,7 +67,7 @@ const AgreementRequests = () => {
   };
   return (
     <div className="w-[90%] mx-auto my-6">
-      <h2 className="text-center text-2xl font-bold mb-3">Agreement Request</h2>
+      <h2 className="text-center text-2xl font-bold mb-3 tinos">Agreement Request</h2>
       <p className="mx-auto max-sm:w-[85%] text-center mb-6">
         Manage all agreement request from here!
       </p>

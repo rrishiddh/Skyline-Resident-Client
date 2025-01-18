@@ -49,7 +49,7 @@ const Navbar = () => {
   );
   return (
     <div className="sticky top-0 z-50">
-      <div className="navbar bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] text-black  px-5  max-sm:pb-3">
+      <div className="navbar bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] text-black  px-5  max-sm:pb-3 ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -78,14 +78,14 @@ const Navbar = () => {
 
           <Link
             to={"/"}
-            className="btn btn-ghost max-sm:btn-sm text-lg max-sm:text-base "
+            className="btn btn-ghost max-sm:btn-sm  text-lg max-sm:text-base handlee" 
           >
             <img
               className="w-10 max-sm:hidden"
               src="https://img.icons8.com/?size=100&id=9ECnYpBa4VDd&format=png&color=000000"
               alt=""
             />
-            Skyline Resident{" "}
+            Skyline <br className="md:hidden" /> Resident{" "}
           </Link>
         </div>
 

@@ -42,10 +42,9 @@ const AdminProfile = () => {
           return res.data;
         },
       });
-      console.log(apartments.length, filteredUsers.length, filteredMembers.length, allAgreements.length, (((apartments.length-allAgreements.length)/apartments.length)*100).toFixed(2), ((allAgreements.length/apartments.length)*100).toFixed(2))
     return (
         <div className="w-[90%] mx-auto my-6">
-            <h2 className="text-center text-2xl font-bold mb-3"> My Profile</h2>
+            <h2 className="text-center text-2xl font-bold mb-3 tinos"> Admin Profile</h2>
             <p className="mx-auto max-sm:w-[85%] text-center mb-6">Welcome, Mr. {user?.displayName} !</p>
 
             <div className="card card-compact bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] md:w-[60%] mx-auto p-5   items-center flex md:flex-row justify-between ">

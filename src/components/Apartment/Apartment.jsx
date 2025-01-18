@@ -101,7 +101,7 @@ const Apartment = () => {
   return (
     <div className="w-[90%] mx-auto min-h-screen my-6">
       <div>
-        <h1 className="text-center text-2xl font-bold mb-3">Apartment</h1>
+        <h1 className="text-center text-2xl font-bold mb-3 tinos">Apartment</h1>
         <p className="mx-auto max-sm:w-[85%] max-sm:text-justify text-center mb-6">
           Explore our apartment options at Skyline Resident. Discover spacious
           layouts, high-end finishes and breathtaking views!
@@ -138,7 +138,7 @@ const Apartment = () => {
                   <img src={apartment.imageUrl} alt={apartment.floorNo} />
                 </figure>
                 <div className="card-body text-justify">
-                  <h2 className="card-title">Floor No : {apartment.floorNo}</h2>
+                  <h2 className="card-title tinos uppercase">Floor No : {apartment.floorNo}</h2>
 
                   <p className="text-sm">Block Name : {apartment.blockName}</p>
                   <p className="text-sm">

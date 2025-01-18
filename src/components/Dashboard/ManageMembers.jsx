@@ -34,7 +34,7 @@ const ManageMembers = () => {
 
   return (
     <div className="w-[90%] mx-auto my-6">
-      <h2 className="text-center text-2xl font-bold mb-3"> Manage Members </h2>
+      <h2 className="text-center text-2xl font-bold mb-3 tinos"> Manage Members </h2>
       <p className="mx-auto max-sm:w-[85%] text-center mb-6">
         Find out all members data from here!
       </p>
@@ -45,8 +45,8 @@ const ManageMembers = () => {
             <thead>
               <tr>
                 <th></th>
-                <td>User Name</td>
-                <td>User Email</td>
+                <td>Member Name</td>
+                <td>Member Email</td>
                 <td>Remove Member</td>
               </tr>
             </thead>
