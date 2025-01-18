@@ -4,6 +4,7 @@ import { AuthContext } from "./AuthProvider";
 import Swal from "sweetalert2";
 import login from "../../assets/login.gif";
 import axios from "axios";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Login = () => {
   const { user, userLogin, setUser, signInWithGoogle } =
@@ -11,6 +12,7 @@ const Login = () => {
   const [error, setError] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
   if (user?.email) {
     return navigate(location?.state ? location.state : "/");
@@ -49,7 +51,7 @@ const Login = () => {
           role: 'user',
         };
   
-        axios.post("http://localhost:3000/users", userInfo).then((res) => {
+        axiosPublic.post("/users", userInfo).then((res) => {
           if (res.data.insertedId) {
             Swal.fire({
               title:  `Welcome, ${user.displayName}!`,

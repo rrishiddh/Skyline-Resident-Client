@@ -8,10 +8,12 @@ import Pagination from "./Pagination";
 import Swal from "sweetalert2";
 import useAdmin from "../hooks/useAdmin";
 import useMember from "../hooks/useMember";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Apartment = () => {
   const { user } = useContext(AuthContext);
-
+  const axiosPublic = useAxiosPublic();
   const [apartmentList, setApartmentList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
@@ -29,19 +31,15 @@ const Apartment = () => {
     { label: "25000 - 30000", min: 25000, max: 30000 },
   ];
 
-  useEffect(() => {
-    const fetchApartments = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/apartment");
-        setApartmentList(response.data);
-        setFilteredApartments(response.data);
-      } catch (error) {
-        console.error("Failed to fetch data:", error);
-      }
-    };
-    fetchApartments();
-  }, []);
-
+  const { data: apartments = [] } = useQuery({
+    queryKey: ["apartments"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/apartment");
+      setApartmentList(res.data);
+      setFilteredApartments(res.data);
+      return res.data;
+    },
+  });
   const handleSearch = () => {
     if (!selectedRange) {
       setFilteredApartments(apartmentList);
@@ -51,7 +49,8 @@ const Apartment = () => {
     const range = priceRanges.find((range) => range.label === selectedRange);
     if (range) {
       const filtered = apartmentList.filter(
-        (apartment) => apartment.rent >= range.min && apartment.rent <= range.max
+        (apartment) =>
+          apartment.rent >= range.min && apartment.rent <= range.max
       );
       setFilteredApartments(filtered);
       setCurrentPage(1);
@@ -60,7 +59,7 @@ const Apartment = () => {
 
   const handleAgreement = async (apartment) => {
     if (!user) {
-      return navigate('/auth/login');
+      return navigate("/auth/login");
     }
     const currentDateTime = new Date().toISOString();
 
@@ -73,21 +72,24 @@ const Apartment = () => {
       rent: parseFloat(apartment.rent),
       status: "pending",
       requestDate: currentDateTime,
-      acceptOrRejectDate: '',
+      acceptOrRejectDate: "",
     };
 
     try {
-      const response = await axios.post("http://localhost:3000/agreements", agreementData);
+      const response = await axiosPublic.post(
+        "/agreements",
+        agreementData
+      );
       if (response.data.result.insertedId) {
         Swal.fire({
-            title: "Agreement request submitted successfully.",
-            icon: "success",
-          });
+          title: "Agreement request submitted successfully.",
+          icon: "success",
+        });
       }
     } catch (error) {
       console.error("Failed to submit agreement:", error);
       Swal.fire({
-        title: "Already submitted agreement once!",
+        title: `${error.response.data.message}`,
         icon: "warning",
       });
     }
@@ -139,24 +141,27 @@ const Apartment = () => {
                   <h2 className="card-title">Floor No : {apartment.floorNo}</h2>
 
                   <p className="text-sm">Block Name : {apartment.blockName}</p>
-                  <p className="text-sm">Apartment No : {apartment.apartmentNo}</p>
+                  <p className="text-sm">
+                    Apartment No : {apartment.apartmentNo}
+                  </p>
                   <p className="text-sm">
                     Rent : <span className="text-xl">৳</span>
                     {apartment.rent}
                   </p>
                   <div className="card-actions justify-end">
-                    {user && user?.email ? (<>
-                      {
-                        isAdmin || isMember ? ('') : (
+                    {user && user?.email ? (
+                      <>
+                        {isAdmin || isMember ? (
+                          ""
+                        ) : (
                           <button
-                          onClick={() => handleAgreement(apartment)}
-                          className="btn btn-sm btn-ghost text-xs bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] hover:from-[#b9dcdf] hover:to-[#87b9bd] border-blue-400"
-                        >
-                          Agreement
-                        </button>
-                        )
-                      }</>
-                     
+                            onClick={() => handleAgreement(apartment)}
+                            className="btn btn-sm btn-ghost text-xs bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] hover:from-[#b9dcdf] hover:to-[#87b9bd] border-blue-400"
+                          >
+                            Agreement
+                          </button>
+                        )}
+                      </>
                     ) : (
                       <Link to={"/auth/login"}>
                         <button className="btn btn-sm btn-ghost text-xs  bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] hover:from-[#b9dcdf] hover:to-[#87b9bd] border-blue-400">

@@ -40,7 +40,7 @@ const MyProfile = () => {
 
       <div className="card card-compact bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] md:w-[60%] mx-auto p-5 items-center flex md:flex-row justify-between ">
         <div className="grid grid-cols-1 gap-4 ">
-          <div className="cursor-pointer avatar ring-primary ring-offset-base-100 rounded-full ring ring-offset-2 mx-auto w-40">
+          <div className="cursor-pointer avatar ring-primary ring-offset-base-100 rounded-full ring ring-offset-2 mx-auto max-md:w-[60%] md:w-40">
             <img
               src={user?.photoURL}
               referrerPolicy="no-referrer"
@@ -48,11 +48,11 @@ const MyProfile = () => {
             />
           </div>
           <div className="text-justify mx-auto ">
-            <p className="text-sm md:text-lg font-bold mb-2">
-              User Name: {user?.displayName}
+            <p className="text-sm md:text-lg  mb-2">
+              User Name: <span className="font-bold">{user?.displayName}</span>
             </p>
-            <p className="text-sm md:text-lg font-bold mb-2">
-              User Email: {user?.email}
+            <p className="text-sm md:text-lg  mb-2">
+              User Email: <span className="font-bold">{user?.email}</span>
             </p>
           </div>
         </div>
@@ -62,22 +62,22 @@ const MyProfile = () => {
         <div>
           {agreementDetails && agreementDetails.userEmail  && isMember ? (
            <>
-              <ul className="text-justify font-bold space-y-4 text-sm">
+              <ul className="text-justify space-y-2 text-sm">
                 <li>
                   Agreement Accept Date:{" "}
-                  {formatDate(agreementDetails.acceptOrRejectDate) || "N/A"}
+                  <span className="font-bold">{formatDate(agreementDetails.acceptOrRejectDate) || "N/A"}</span> 
                 </li>
-                <li>Floor: {agreementDetails.floorNo || "N/A"}</li>
-                <li>Block: {agreementDetails.blockName || "N/A"}</li>
-                <li>Apartment No: {agreementDetails.apartmentNo || "N/A"}</li>
+                <li>Floor: <span className="font-bold">{agreementDetails.floorNo || "N/A"}</span></li>
+                <li>Block: <span className="font-bold">{agreementDetails.blockName || "N/A"}</span></li>
+                <li>Apartment No: <span className="font-bold">{agreementDetails.apartmentNo || "N/A"}</span></li>
               </ul>
             </>
           ) : (
-            <ul className="text-justify font-bold space-y-4 text-sm">
-              <li>Agreement Accept Date: N/A</li>
-              <li>Floor: N/A</li>
-              <li>Block: N/A</li>
-              <li>Apartment No.: N/A</li>
+            <ul className="text-justify space-y-4 text-sm">
+              <li>Agreement Accept Date: <span className="font-bold">N/A</span></li>
+              <li>Floor: <span className="font-bold">N/A</span></li>
+              <li>Block: <span className="font-bold">N/A</span></li>
+              <li>Apartment No.: <span className="font-bold">N/A</span></li>
             </ul>
           )}
         </div>

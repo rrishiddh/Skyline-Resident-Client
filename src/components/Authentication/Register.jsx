@@ -4,11 +4,13 @@ import { AuthContext } from "./AuthProvider";
 import Swal from "sweetalert2";
 import register from "../../assets/register.gif";
 import axios from "axios";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Register = () => {
   const { user, setUser, createNewUser, updateUserProfile, signInWithGoogle, logOut } = useContext(AuthContext);
   const [error, setError] = useState({});
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
   if(user?.email){
     return navigate(location?.state ? location.state : "/") 
@@ -40,7 +42,7 @@ const Register = () => {
               role: 'user',
             };
   
-            axios.post("http://localhost:3000/users", userInfo).then((res) => {
+            axiosPublic.post("/users", userInfo).then((res) => {
               if (res.data.insertedId) {
                 Swal.fire({
                   title: `Welcome ${name}!`,
@@ -74,7 +76,7 @@ const Register = () => {
           role: 'user',
         };
   
-        axios.post("http://localhost:3000/users", userInfo).then((res) => {
+        axiosPublic.post("/users", userInfo).then((res) => {
           if (res.data.insertedId) {
             Swal.fire({
               title:  `Welcome, ${user.displayName}!`,

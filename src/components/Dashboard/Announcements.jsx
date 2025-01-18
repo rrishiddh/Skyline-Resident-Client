@@ -1,14 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
 const Announcements = () => {
+  const axiosPublic = useAxiosPublic()
 
 
   const { data: announcement = []} = useQuery({
     queryKey: ["announcement"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:3000/announcement");
+      const res = await axiosPublic.get("/announcement");
       return res.data;
     },
   });

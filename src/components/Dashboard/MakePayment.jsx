@@ -28,10 +28,17 @@ const MakePayment = () => {
     },
   });
 
+
+  const { data: couponData = {} } = useQuery({
+    queryKey: ["couponData"],
+    queryFn: async () => {
+  const res = await axiosSecure.get(`/coupon?code=${coupon}`);
+      return res.data;
+    },
+  });
+
   const handleCouponApply = async () => {
     try {
-      const res = await axiosSecure.get(`/coupon?code=${coupon}`);
-      const couponData = res.data;
       if (couponData && couponData.available === 'Available') {
         const discountAmount =
           (agreementDetails.rent * couponData.discountPercentage) / 100;

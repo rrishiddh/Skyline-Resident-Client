@@ -105,9 +105,9 @@ const Navbar = () => {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow mt-6"
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 space-y-2 shadow mt-6"
                 >
-                    <p> Welcome, {user?.displayName}!</p>
+                    <p className="text-xs text-red-400 uppercase"> Welcome, {user?.displayName}!</p>
                   {
                     user && isAdmin && <li>
                     <Link to="dashboard/admin-profile">Dashboard</Link>
@@ -121,7 +121,7 @@ const Navbar = () => {
                   <li>
                     <button
                       onClick={handleLogOut}
-                      className="btn btn-sm text-xs mx-auto w-full"
+                      className="btn btn-sm text-xs "
                     >
                       Logout
                     </button>
