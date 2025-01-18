@@ -51,7 +51,20 @@ const AgreementRequests = () => {
       console.error("Failed to update availability:", error);
     }
   };
-
+  const formatDate = (isoDate) => {
+      if (!isoDate) {
+        return "N/A"; 
+      }
+    const date = new Date(isoDate);
+    return date.toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+  };
   return (
     <div className="w-[90%] mx-auto my-6">
       <h2 className="text-center text-2xl font-bold mb-3">Agreement Request</h2>
@@ -85,7 +98,7 @@ const AgreementRequests = () => {
                 <td>{agreements.blockName}</td>
                 <td>{agreements.apartmentNo}</td>
                 <td>{agreements.rent}</td>
-                <td>{agreements.agreementRequestDate || "N/A"}</td>
+                <td>{formatDate(agreements.requestDate)}</td>
                 <td>
                   <button
                     onClick={() => handleStatusAccept(agreements.userEmail)}
@@ -106,18 +119,6 @@ const AgreementRequests = () => {
                     />
                   </button>
                 </td>
-                {/* <td>
-                  <select
-                    className="select select-bordered"
-                    value={agreements.available}
-                    // onChange={(e) =>
-                    //   handleChangeAvailability(coupon._id, e.target.value)
-                    // }
-                  >
-                    <option value="Available">Available</option>
-                    <option value="Unavailable">Unavailable</option>
-                  </select>
-                </td> */}
               </tr>
             ))}
           </tbody>

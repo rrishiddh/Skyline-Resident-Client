@@ -12,7 +12,7 @@ const AdminProfile = () => {
 
             <div className="card card-compact bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] md:w-[60%] mx-auto p-5   items-center flex md:flex-row justify-between ">
                 <div className="grid grid-cols-1 gap-4 ">                
-                <div className="cursor-pointer avatar ring-primary ring-offset-base-100  rounded-full ring ring-offset-2 mx-auto"> 
+                <div className="cursor-pointer avatar ring-primary ring-offset-base-100  rounded-full ring ring-offset-2 mx-auto w-40"> 
                 <img src={user?.photoURL} referrerPolicy="no-referrer" className="rounded-full "/>
                 </div>
                 <div className="text-justify mx-auto ">

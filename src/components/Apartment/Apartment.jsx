@@ -6,6 +6,8 @@ import { AuthContext } from "../Authentication/AuthProvider";
 import axios from "axios";
 import Pagination from "./Pagination";
 import Swal from "sweetalert2";
+import useAdmin from "../hooks/useAdmin";
+import useMember from "../hooks/useMember";
 
 const Apartment = () => {
   const { user } = useContext(AuthContext);
@@ -16,6 +18,9 @@ const Apartment = () => {
   const [filteredApartments, setFilteredApartments] = useState([]);
   const [selectedRange, setSelectedRange] = useState("");
   const navigate = useNavigate();
+
+  const [isAdmin] = useAdmin();
+  const [isMember] = useMember();
 
   const priceRanges = [
     { label: "10000 - 15000", min: 10000, max: 15000 },
@@ -57,6 +62,7 @@ const Apartment = () => {
     if (!user) {
       return navigate('/auth/login');
     }
+    const currentDateTime = new Date().toISOString();
 
     const agreementData = {
       userName: user.displayName,
@@ -64,8 +70,10 @@ const Apartment = () => {
       floorNo: apartment.floorNo,
       blockName: apartment.blockName,
       apartmentNo: apartment.apartmentNo,
-      rent: apartment.rent,
+      rent: parseFloat(apartment.rent),
       status: "pending",
+      requestDate: currentDateTime,
+      acceptOrRejectDate: '',
     };
 
     try {
@@ -137,13 +145,18 @@ const Apartment = () => {
                     {apartment.rent}
                   </p>
                   <div className="card-actions justify-end">
-                    {user && user?.email ? (
-                      <button
-                        onClick={() => handleAgreement(apartment)}
-                        className="btn btn-sm btn-ghost text-xs bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] hover:from-[#b9dcdf] hover:to-[#87b9bd] border-blue-400"
-                      >
-                        Agreement
-                      </button>
+                    {user && user?.email ? (<>
+                      {
+                        isAdmin || isMember ? ('') : (
+                          <button
+                          onClick={() => handleAgreement(apartment)}
+                          className="btn btn-sm btn-ghost text-xs bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] hover:from-[#b9dcdf] hover:to-[#87b9bd] border-blue-400"
+                        >
+                          Agreement
+                        </button>
+                        )
+                      }</>
+                     
                     ) : (
                       <Link to={"/auth/login"}>
                         <button className="btn btn-sm btn-ghost text-xs  bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] hover:from-[#b9dcdf] hover:to-[#87b9bd] border-blue-400">

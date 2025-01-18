@@ -32,7 +32,7 @@ const MakePayment = () => {
     try {
       const res = await axiosSecure.get(`/coupon?code=${coupon}`);
       const couponData = res.data;
-      if (couponData && couponData.available) {
+      if (couponData && couponData.available === 'Available') {
         const discountAmount =
           (agreementDetails.rent * couponData.discountPercentage) / 100;
         setDiscountRent(agreementDetails.rent - discountAmount);
@@ -188,7 +188,7 @@ const MakePayment = () => {
     <div className="my-6 w-[90%] mx-auto">
       <h1 className="text-center text-2xl font-bold mb-3">Make Payment</h1>
       <p className="mx-auto max-sm:w-[85%] text-center mb-6">
-        Make a quick payment to book your apartment!
+        Pay your apartment rent from here!
       </p>
 
       <div className="card bg-base-200  shadow-xl w-[70%] md:w-[40%] mx-auto p-4">

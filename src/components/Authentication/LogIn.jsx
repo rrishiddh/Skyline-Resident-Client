@@ -46,6 +46,7 @@ const Login = () => {
         const userInfo = {
           userName: user.displayName,
           userEmail: user.email,
+          role: 'user',
         };
   
         axios.post("http://localhost:3000/users", userInfo).then((res) => {
@@ -54,8 +55,8 @@ const Login = () => {
               title:  `Welcome, ${user.displayName}!`,
               icon: "success",
             });
+            navigate(location?.state ? location.state : "/");
           } 
-          navigate(location?.state ? location.state : "/");
         });
       })
       .catch((error) => {

@@ -2,10 +2,14 @@ import { useContext } from "react";
 import { AuthContext } from "../Authentication/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import useMember from "../hooks/useMember";
 
 const MyProfile = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
+
+  const [isMember] = useMember();
+
 
   const { data: agreementDetails = []} = useQuery({
     queryKey: ["agreementDetails"],
@@ -14,6 +18,18 @@ const MyProfile = () => {
       return res.data;
     },
   });
+  const formatDate = (isoDate) => {
+    if (!isoDate) {
+      return "N/A"; 
+    }
+    const date = new Date(isoDate);
+    return date.toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour12: true,
+    });
+  };
 
   return (
     <div className="w-[90%] mx-auto my-6">
@@ -24,11 +40,11 @@ const MyProfile = () => {
 
       <div className="card card-compact bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] md:w-[60%] mx-auto p-5 items-center flex md:flex-row justify-between ">
         <div className="grid grid-cols-1 gap-4 ">
-          <div className="cursor-pointer avatar ring-primary ring-offset-base-100 rounded-full ring ring-offset-2 mx-auto">
+          <div className="cursor-pointer avatar ring-primary ring-offset-base-100 rounded-full ring ring-offset-2 mx-auto w-40">
             <img
               src={user?.photoURL}
               referrerPolicy="no-referrer"
-              className="rounded-full "
+              className="rounded-full  "
             />
           </div>
           <div className="text-justify mx-auto ">
@@ -44,12 +60,12 @@ const MyProfile = () => {
         <div className="divider md:divider-horizontal w-[50%] mx-auto"></div>
 
         <div>
-          {agreementDetails && agreementDetails.userEmail ? (
+          {agreementDetails && agreementDetails.userEmail  && isMember ? (
            <>
               <ul className="text-justify font-bold space-y-4 text-sm">
                 <li>
                   Agreement Accept Date:{" "}
-                  {agreementDetails.agreementAcceptDate || "N/A"}
+                  {formatDate(agreementDetails.acceptOrRejectDate) || "N/A"}
                 </li>
                 <li>Floor: {agreementDetails.floorNo || "N/A"}</li>
                 <li>Block: {agreementDetails.blockName || "N/A"}</li>

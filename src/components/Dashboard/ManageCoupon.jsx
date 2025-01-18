@@ -12,7 +12,7 @@ const ManageCoupon = () => {
     code: "",
     discountPercentage: "",
     couponDescription: "",
-    available: "",
+    available: "Available",
   });
 
   const { data: allCoupons = [], refetch } = useQuery({
@@ -109,7 +109,6 @@ const ManageCoupon = () => {
               <input
                 type="text"
                 className="input input-bordered"
-                value={newCoupon.code}
                 onChange={(e) =>
                   setNewCoupon({ ...newCoupon, code: e.target.value })
                 }
@@ -122,11 +121,10 @@ const ManageCoupon = () => {
                 min="1"
                 max="100"
                 className="input input-bordered"
-                value={newCoupon.discountPercentage}
                 onChange={(e) =>
                   setNewCoupon({
                     ...newCoupon,
-                    discountPercentage: e.target.value,
+                    discountPercentage: parseFloat(e.target.value),
                   })
                 }
               />
@@ -135,7 +133,6 @@ const ManageCoupon = () => {
               <label className="label text-sm">Coupon Description</label>
               <input
                 className="textarea textarea-bordered"
-                value={newCoupon.couponDescription}
                 onChange={(e) =>
                   setNewCoupon({
                     ...newCoupon,
@@ -148,7 +145,6 @@ const ManageCoupon = () => {
               <label className="label text-sm">Availability</label>
               <select
                 className="select select-bordered"
-                value={newCoupon.available}
                 onChange={(e) =>
                   setNewCoupon({ ...newCoupon, available: e.target.value })
                 }

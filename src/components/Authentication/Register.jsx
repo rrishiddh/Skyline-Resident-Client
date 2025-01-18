@@ -37,6 +37,7 @@ const Register = () => {
             const userInfo = {
               userName: name,
               userEmail: email,
+              role: 'user',
             };
   
             axios.post("http://localhost:3000/users", userInfo).then((res) => {
@@ -46,9 +47,9 @@ const Register = () => {
                   text: `Please Login Now!`,
                   icon: "success",
                 });
+                logOut(); 
+                navigate(location?.state ? location.state : "/");
               }
-              navigate(location?.state ? location.state : "/");
-              logOut(); 
             });
           })
           .catch((err) => {
@@ -70,6 +71,7 @@ const Register = () => {
         const userInfo = {
           userName: user.displayName,
           userEmail: user.email,
+          role: 'user',
         };
   
         axios.post("http://localhost:3000/users", userInfo).then((res) => {
@@ -79,9 +81,9 @@ const Register = () => {
               text: `Please Login Now`,
               icon: "success",
             });
+            logOut();
+            navigate(location?.state ? location.state : "/");
           } 
-          logOut();
-          navigate(location?.state ? location.state : "/");
         });
       })
       .catch((error) => {
