@@ -15,7 +15,6 @@ const PaymentHistory = () => {
       return res.data;
     },
   });
-console.log(allPayments)
 
     return (
         <div className="w-[90%] mx-auto my-6">
@@ -35,7 +34,6 @@ console.log(allPayments)
               <td>Payment ID</td>
               <td>Month</td>
               <td>Rent</td>
-              <td>Status</td>
             </tr>
           </thead>
           <tbody>
@@ -45,9 +43,7 @@ console.log(allPayments)
                 <td>{allPayments.floorNo  || "N/A"}</td>
                 <td>{allPayments.paymentId  || "N/A"}</td>
                 <td>{allPayments.month  || "N/A"}</td>
-                <td>{allPayments.rent  || "N/A"}</td>
-                <td>{allPayments.status  || "N/A"}</td>
-                
+                <td>{allPayments.rent  || "N/A"}</td>                
               </tr>
           </tbody>
         </table>

@@ -123,8 +123,9 @@ const MakePayment = () => {
         console.log("[PaymentIntent]", paymentIntent);
         if (paymentIntent.status === "succeeded") {
           try {
+            const { _id, ...previousPaymentData } = agreementDetails;
             const paymentData = {
-              ...agreementDetails,
+              ...previousPaymentData,
               coupon,
               discountedRent,
               paymentId: paymentIntent.id,
