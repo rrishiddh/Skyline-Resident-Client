@@ -1,9 +1,8 @@
-import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link,useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import Swal from "sweetalert2";
 import register from "../../assets/register.gif";
-import axios from "axios";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Register = () => {
@@ -12,9 +11,12 @@ const Register = () => {
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
 
-  if(user?.email){
-    return navigate(location?.state ? location.state : "/") 
-  }
+
+  useEffect(() => {
+    if (user?.email) {
+      navigate("/");
+    }
+  }, [user, navigate]);
  
   const handelSubmit = (e) => {
     e.preventDefault();
@@ -50,7 +52,7 @@ const Register = () => {
                   icon: "success",
                 });
                 logOut(); 
-                navigate(location?.state ? location.state : "/");
+                navigate("/");
               }
             });
           })
@@ -84,7 +86,7 @@ const Register = () => {
               icon: "success",
             });
             logOut();
-            navigate(location?.state ? location.state : "/");
+            navigate("/");
           } 
         });
       })

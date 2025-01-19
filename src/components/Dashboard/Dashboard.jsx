@@ -5,98 +5,77 @@ import { useContext } from "react";
 import useMember from "../hooks/useMember";
 
 const Dashboard = () => {
-    const {  logOut } = useContext(AuthContext);
-    const navigate = useNavigate()
+  const { logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-    const handleLogOut = () => {
-      logOut().then(() => {
-        navigate("/");
-      });
-    };
-  
+  const handleLogOut = () => {
+    logOut().then(() => {
+      navigate("/");
+    });
+  };
+
   const [isAdmin] = useAdmin();
   const [isMember] = useMember();
-
 
   const navOption = (
     <>
       {isAdmin ? (
         <>
           <li>
-            <NavLink to="/">Main Website</NavLink>
+            <NavLink to="/" className='text-xs'>Home</NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/admin-profile">Admin Profile</NavLink>
+            <NavLink to="/dashboard/admin-profile" className='text-xs'>Admin Profile</NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/manage-members">Manage Members</NavLink>
+            <NavLink to="/dashboard/manage-members" className='text-xs'>Manage Members</NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/make-announcement">Make Announcement</NavLink>
+            <NavLink to="/dashboard/make-announcement" className='text-xs'>
+              Make Announcement
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/agreement-requests">Agreement Requests</NavLink>
+            <NavLink to="/dashboard/agreement-requests" className='text-xs'>
+              Agreement Requests
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/manage-coupons">Manage Coupons</NavLink>
-          </li>
-          <li>
-            <button
-              onClick={handleLogOut}
-              className="btn btn-sm btn-ghost mx-auto ml-1"
-            >
-              Logout
-            </button>
+            <NavLink to="/dashboard/manage-coupons" className='text-xs'>Manage Coupons</NavLink>
           </li>
         </>
       ) : (
         <>
-        {
-          isMember? (
+          {isMember ? (
             <>
-        <li>
-          <NavLink to="/">Main Website</NavLink>
-        </li>
-        <li>
-            <NavLink to="/dashboard/profile">My Profile</NavLink>
-          </li>
-        <li>
-            <NavLink to="/dashboard/make-payment">Make payment</NavLink>
-          </li>
-        <li>
-            <NavLink to="/dashboard/payment-history">Payment History</NavLink>
-          </li>
-        <li>
-            <NavLink to="/dashboard/announcements">Announcements</NavLink>
-          </li>
-        <li>
-            <button
-              onClick={handleLogOut}
-              className="btn btn-sm btn-ghost  mx-auto ml-1"
-            >
-              Logout
-            </button>
-          </li>
-        </>
-          ) : ( 
+              <li>
+                <NavLink to="/" className='text-xs'>Home</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/profile" className='text-xs'>My Profile</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/make-payment" className='text-xs'>Make payment</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/payment-history" className='text-xs'>
+                  Payment History
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/announcements" className='text-xs'>Announcements</NavLink>
+              </li>
+            </>
+          ) : (
             <>
-        <li>
-          <NavLink to="/">Main Website</NavLink>
-        </li>
-        <li>
-            <NavLink to="/dashboard/announcements">Announcements</NavLink>
-          </li>
-        <li>
-            <button
-              onClick={handleLogOut}
-              className="btn btn-sm btn-ghost  mx-auto ml-1"
-            >
-              Logout
-            </button>
-          </li>
-        </>
-          )
-        }
+              <li>
+                <NavLink to="/" className='text-xs'>Home</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/announcements" className='text-xs'>Announcements</NavLink>
+              </li>
+            </>
+          )}
         </>
       )}
     </>
@@ -130,7 +109,9 @@ const Dashboard = () => {
                 </svg>
               </label>
             </div>
-            <div className="mx-2 flex-1 px-2 text-lg font-bold handlee">Dashboard</div>
+            <div className="mx-2 flex-1 px-2 text-lg font-bold handlee">
+              Dashboard
+            </div>
             <div className="hidden flex-none lg:block">
               <ul className="menu menu-horizontal text-sm">
                 {/* Navbar menu content here */}
@@ -149,9 +130,30 @@ const Dashboard = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] text-black min-h-full w-80 p-4 pt-6 gap-2 text-sm">
+        <ul className="menu bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] text-black min-h-full max-sm:w-40 w-60 p-4 pt-10 gap-2 text-sm z-10">
           {/* Sidebar content here */}
+          <div className="mx-2 px-2 text-lg font-bold handlee">
+              Dashboard
+            </div>
+          <label
+            htmlFor="my-drawer-3"
+            aria-label="close sidebar"
+            className="btn btn-square btn-ghost absolute top-1 right-0 "
+          >
+            <img
+              src="https://img.icons8.com/?size=100&id=63688&format=png&color=000000"
+              className="w-10"
+            />
+          </label>
           {navOption}
+          <li>
+                <button
+                  onClick={handleLogOut}
+                  className="btn btn-sm btn-ghost  mx-auto ml-1"
+                >
+                  Logout
+                </button>
+              </li>
         </ul>
       </div>
     </div>

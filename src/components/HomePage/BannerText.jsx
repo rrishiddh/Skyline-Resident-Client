@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const BannerText = ({ image, text }) => {
     return (
         <div
-      className="w-full bg-center bg-cover  h-[25rem] max-sm:h-[35rem]"
+      className="w-full bg-center bg-cover  h-[25rem]"
       style={{
         backgroundImage: `url(${image})`,
       }}

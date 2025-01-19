@@ -1,22 +1,22 @@
-import { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import Swal from "sweetalert2";
 import login from "../../assets/login.gif";
-import axios from "axios";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Login = () => {
   const { user, userLogin, setUser, signInWithGoogle } =
     useContext(AuthContext);
   const [error, setError] = useState({});
-  const location = useLocation();
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
 
-  if (user?.email) {
-    return navigate(location?.state ? location.state : "/");
-  }
+  useEffect(() => {
+    if (user?.email) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   const handelSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ const Login = () => {
           text: `Welcome ${user.displayName}!`,
           icon: "success",
         });
-        navigate(location?.state ? location.state : "/");
+        navigate("/");
       })
       .catch((err) => {
         setError({ ...error, login: err.code });
@@ -57,7 +57,7 @@ const Login = () => {
               title:  `Welcome, ${user.displayName}!`,
               icon: "success",
             });
-            navigate(location?.state ? location.state : "/");
+            navigate("/");
           } 
         });
       })

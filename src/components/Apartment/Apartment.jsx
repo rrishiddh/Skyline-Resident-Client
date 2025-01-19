@@ -1,9 +1,8 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { AuthContext } from "../Authentication/AuthProvider";
-import axios from "axios";
 import Pagination from "./Pagination";
 import Swal from "sweetalert2";
 import useAdmin from "../hooks/useAdmin";

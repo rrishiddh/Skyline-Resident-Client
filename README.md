@@ -87,6 +87,12 @@
 
 6. Run 'npm run dev' to run the project locally.
 
+## Credential for login to Admin Dashboard-
+
+- Admin Email: admin@gmail.com
+- Admin Password: Admin123
+
+###
 
 ##  Live Link: 
 ### Surge : [Skyline Resident](https://skyline-resident-rrishiddh.surge.sh)
