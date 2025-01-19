@@ -47,7 +47,7 @@ const Register = () => {
             axiosPublic.post("/users", userInfo).then((res) => {
               if (res.data.insertedId) {
                 Swal.fire({
-                  title: `Welcome ${name}!`,
+                  title: `Welcome, ${name}!`,
                   text: `Register Successfully!`,
                   icon: "success",
                 });
@@ -81,7 +81,7 @@ const Register = () => {
           if (res.data.insertedId) {
             Swal.fire({
               title: `Welcome, ${user.displayName}!`,
-              text: `Successfully Registered, Please Login Now!`,
+              text: `Successfully Registered!`,
               icon: "success",
             });
             // logOut();
@@ -89,7 +89,7 @@ const Register = () => {
             navigate("/");
           }else {
             Swal.fire({
-              title: `Welcome ${user.displayName}!`,
+              title: `Welcome, ${user.displayName}!`,
               text: `Login Successful!`,
               icon: "success",
             });

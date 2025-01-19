@@ -6,8 +6,7 @@ import login from "../../assets/login.gif";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Login = () => {
-  const { user, userLogin, setUser, signInWithGoogle, logOut } =
-    useContext(AuthContext);
+  const { user, userLogin, setUser, signInWithGoogle } = useContext(AuthContext);
   const [error, setError] = useState({});
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
@@ -29,7 +28,7 @@ const Login = () => {
         setUser(user);
         Swal.fire({
           title: "Successfully Login!",
-          text: `Welcome ${user.displayName}!`,
+          text: `Welcome, ${user.displayName}!`,
           showClass: {
             popup: `
               animate__animated
@@ -68,7 +67,7 @@ const Login = () => {
           if (res.data.insertedId) {
             Swal.fire({
               title: `Welcome, ${user.displayName}!`,
-              text: `Successfully Registered, Please Login Now!`,
+              text: `Successfully Registered!`,
               showClass: {
                 popup: `
                   animate__animated
@@ -87,7 +86,7 @@ const Login = () => {
             // logOut();
           } else {
             Swal.fire({
-              title: `Welcome ${user.displayName}!`,
+              title: `Welcome, ${user.displayName}!`,
               icon: "success",
             });
           }

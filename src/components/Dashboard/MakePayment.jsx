@@ -29,19 +29,29 @@ const MakePayment = () => {
   });
 
 
-  const { data: couponData = {} } = useQuery({
-    queryKey: ["couponData"],
+  const { data: couponData, refetch: fetchCouponData } = useQuery({
+    queryKey: ["couponData", coupon],
     queryFn: async () => {
-  const res = await axiosSecure.get(`/coupon?code=${coupon}`);
+      const res = await axiosSecure.get(`/coupon?code=${coupon}`);
       return res.data;
     },
+    enabled: false,
   });
 
   const handleCouponApply = async () => {
+    if (!coupon) {
+      Swal.fire({
+        title: "Invalid Coupon",
+        text: "Please enter a coupon code.",
+        icon: "error",
+      });
+      return;
+    }
     try {
-      if (couponData && couponData.available === 'Available') {
+      const { data } = await fetchCouponData();
+      if (data && data.available === "Available") {
         const discountAmount =
-          (agreementDetails.rent * couponData.discountPercentage) / 100;
+          (agreementDetails.rent * data.discountPercentage) / 100;
         setDiscountRent(agreementDetails.rent - discountAmount);
         Swal.fire({
           title: "Coupon Applied Successfully!",
