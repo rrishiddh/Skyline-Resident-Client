@@ -11,7 +11,7 @@
 
 ### Purpose:
 
-- The purpose of the Skyline Resident project is to create an efficient, user-friendly platform for managing residential buildings by streamlining tenant interactions, administrative tasks, and resource allocation, fostering seamless collaboration between administrators, members and users. The Admin Dashboard empowers administrators to efficiently manage members, review agreement requests, and handle coupon creation. Admins can also make important announcements and oversee the entire building management process. The Member Dashboard provides members with access to rent payments, payment history, and announcements, ensuring seamless tenant interactions. Users, on the other hand, can explore available apartments and submit agreement requests for desired units.
+- The purpose of the Skyline Resident project is to build a full-stack (MERN) project to create an efficient, user-friendly platform for managing residential buildings by streamlining tenant interactions, administrative tasks, and resource allocation, fostering seamless collaboration between administrators, members and users. The Admin Dashboard empowers administrators to efficiently manage members, review agreement requests, and handle coupon creation. Admins can also make important announcements and oversee the entire building management process. The Member Dashboard provides members with access to rent payments, payment history, and announcements, ensuring seamless tenant interactions. Users, on the other hand, can explore available apartments and submit agreement requests for desired units. 
   
 
 

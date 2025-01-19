@@ -91,7 +91,7 @@ const ManageCoupon = () => {
 
       <div className="flex justify-end w-[80%] mx-auto">
         <button
-        className="btn btn-info mt-4 "
+        className="btn btn-info mt-4 bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] text-black"
         onClick={() => setShowModal(true)}
       >
         Add New Coupon
@@ -160,7 +160,7 @@ const ManageCoupon = () => {
               >
                 Cancel
               </button>
-              <button className="btn btn-info" onClick={handleAddCoupon}>
+              <button className="btn btn-info bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] text-black" onClick={handleAddCoupon}>
                 Submit
               </button>
             </div>

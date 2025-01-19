@@ -1,23 +1,23 @@
 import { useContext, useEffect, useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import Swal from "sweetalert2";
 import register from "../../assets/register.gif";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Register = () => {
-  const { user, setUser, createNewUser, updateUserProfile, signInWithGoogle, logOut } = useContext(AuthContext);
+  const { user, setUser, createNewUser, updateUserProfile, signInWithGoogle, logOut } =
+    useContext(AuthContext);
   const [error, setError] = useState({});
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
-
 
   useEffect(() => {
     if (user?.email) {
       navigate("/");
     }
   }, [user, navigate]);
- 
+
   const handelSubmit = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -25,13 +25,13 @@ const Register = () => {
     const photo = form.get("photo");
     const email = form.get("email");
     const password = form.get("password");
-  
+
     const passwordError = validatePassword(password);
     if (passwordError) {
       setError({ ...error, password: passwordError });
       return;
     }
-  
+
     createNewUser(email, password)
       .then((result) => {
         const user = result.user;
@@ -41,17 +41,16 @@ const Register = () => {
             const userInfo = {
               userName: name,
               userEmail: email,
-              role: 'user',
+              role: "user",
             };
-  
+
             axiosPublic.post("/users", userInfo).then((res) => {
               if (res.data.insertedId) {
                 Swal.fire({
                   title: `Welcome ${name}!`,
-                  text: `Please Login Now!`,
+                  text: `Register Successfully!`,
                   icon: "success",
                 });
-                logOut(); 
                 navigate("/");
               }
             });
@@ -65,29 +64,37 @@ const Register = () => {
         setError({ ...error, register: errorCode });
       });
   };
-  
+
   const handelGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
         setUser(user);
-  
+
         const userInfo = {
           userName: user.displayName,
           userEmail: user.email,
-          role: 'user',
+          role: "user",
         };
-  
+
         axiosPublic.post("/users", userInfo).then((res) => {
           if (res.data.insertedId) {
             Swal.fire({
-              title:  `Welcome, ${user.displayName}!`,
-              text: `Please Login Now`,
+              title: `Welcome, ${user.displayName}!`,
+              text: `Successfully Registered, Please Login Now!`,
               icon: "success",
             });
-            logOut();
+            // logOut();
+
             navigate("/");
-          } 
+          }else {
+            Swal.fire({
+              title: `Welcome ${user.displayName}!`,
+              text: `Login Successful!`,
+              icon: "success",
+            });
+            navigate("/");
+          }
         });
       })
       .catch((error) => {
@@ -95,7 +102,6 @@ const Register = () => {
         setError({ ...error, register: errorCode });
       });
   };
-  
 
   const validatePassword = (password) => {
     if (password.length < 6) {
@@ -117,7 +123,10 @@ const Register = () => {
           Register Your Account
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center">
-          <img src={register} className="w-[70%] max-sm:w-[50%] mx-auto my-auto"></img>
+          <img
+            src={register}
+            className="w-[70%] max-sm:w-[50%] mx-auto my-auto"
+          ></img>
 
           <div className="card card-compact bg-slate-50 border-2 w-[70%] mx-auto shrink-0 p-6">
             <form onSubmit={handelSubmit} className="card-body">

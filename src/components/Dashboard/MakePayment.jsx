@@ -182,7 +182,7 @@ const MakePayment = () => {
         <div className="justify-end flex">
           <button
             type="submit"
-            className="btn btn-info w-full"
+            className="btn btn-info w-full bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] text-black"
             disabled={!stripe || !clientSecret}
           >
             Pay
@@ -276,7 +276,7 @@ const MakePayment = () => {
           <button
             type="button"
             onClick={() => setIsModalOpen(true)}
-            className="mt-5 mb-3 btn btn-info md:col-span-2 md:w-[50%] md:mx-auto"
+            className="mt-5 mb-3 btn btn-info md:col-span-2 md:w-[50%] md:mx-auto bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] text-black"
           >
             Pay Now
           </button>
@@ -285,7 +285,7 @@ const MakePayment = () => {
 
       {isModalOpen && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
-          <div className="bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] text-black p-5 rounded-md w-[90%] max-w-lg relative">
+          <div className="bg-base-200 p-5 rounded-md w-[90%] max-w-lg relative">
             <h3 className="text-xl max-sm:text-lg font-bold mb-4">Complete Your Payment</h3>
             <div className="mt-4">
             <div className="label">
@@ -300,7 +300,7 @@ const MakePayment = () => {
               />
               <button
                 type="button"
-                className="btn btn-info mt-2 w-full"
+                className="btn btn-info mt-2 w-full bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] text-black"
                 onClick={handleCouponApply}
               >
                 Apply Coupon

@@ -22,26 +22,44 @@ const Dashboard = () => {
       {isAdmin ? (
         <>
           <li>
-            <NavLink to="/" className='text-xs'>Home</NavLink>
+            <NavLink to="/" className='text-xs' style={({ isActive }) => ({
+            backgroundColor: isActive ? "#71C9CE" : "transparent",
+            color: "black",
+          })}>Home</NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/admin-profile" className='text-xs'>Admin Profile</NavLink>
+            <NavLink to="/dashboard/admin-profile" className='text-xs' style={({ isActive }) => ({
+            backgroundColor: isActive ? "#71C9CE" : "transparent",
+            color: "black",
+          })}>Admin Profile</NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/manage-members" className='text-xs'>Manage Members</NavLink>
+            <NavLink to="/dashboard/manage-members" className='text-xs' style={({ isActive }) => ({
+            backgroundColor: isActive ? "#71C9CE" : "transparent",
+            color: "black",
+          })}>Manage Members</NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/make-announcement" className='text-xs'>
+            <NavLink to="/dashboard/make-announcement" className='text-xs' style={({ isActive }) => ({
+            backgroundColor: isActive ? "#71C9CE" : "transparent",
+            color: "black",
+          })}>
               Make Announcement
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/agreement-requests" className='text-xs'>
+            <NavLink to="/dashboard/agreement-requests" className='text-xs' style={({ isActive }) => ({
+            backgroundColor: isActive ? "#71C9CE" : "transparent",
+            color: "black",
+          })}>
               Agreement Requests
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/manage-coupons" className='text-xs'>Manage Coupons</NavLink>
+            <NavLink to="/dashboard/manage-coupons" className='text-xs' style={({ isActive }) => ({
+            backgroundColor: isActive ? "#71C9CE" : "transparent",
+            color: "black",
+          })}>Manage Coupons</NavLink>
           </li>
         </>
       ) : (
@@ -49,30 +67,51 @@ const Dashboard = () => {
           {isMember ? (
             <>
               <li>
-                <NavLink to="/" className='text-xs'>Home</NavLink>
+                <NavLink to="/" className='text-xs' style={({ isActive }) => ({
+            backgroundColor: isActive ? "#71C9CE" : "transparent",
+            color: "black",
+          })}>Home</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/profile" className='text-xs'>My Profile</NavLink>
+                <NavLink to="/dashboard/profile" className='text-xs' style={({ isActive }) => ({
+            backgroundColor: isActive ? "#71C9CE" : "transparent",
+            color: "black",
+          })}>My Profile</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/make-payment" className='text-xs'>Make payment</NavLink>
+                <NavLink to="/dashboard/make-payment" className='text-xs' style={({ isActive }) => ({
+            backgroundColor: isActive ? "#71C9CE" : "transparent",
+            color: "black",
+          })}>Make payment</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/payment-history" className='text-xs'>
+                <NavLink to="/dashboard/payment-history" className='text-xs' style={({ isActive }) => ({
+            backgroundColor: isActive ? "#71C9CE" : "transparent",
+            color: "black",
+          })}>
                   Payment History
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/announcements" className='text-xs'>Announcements</NavLink>
+                <NavLink to="/dashboard/announcements" className='text-xs' style={({ isActive }) => ({
+            backgroundColor: isActive ? "#71C9CE" : "transparent",
+            color: "black",
+          })}>Announcements</NavLink>
               </li>
             </>
           ) : (
             <>
               <li>
-                <NavLink to="/" className='text-xs'>Home</NavLink>
+                <NavLink to="/" className='text-xs' style={({ isActive }) => ({
+            backgroundColor: isActive ? "#71C9CE" : "transparent",
+            color: "black",
+          })}>Home</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/announcements" className='text-xs'>Announcements</NavLink>
+                <NavLink to="/dashboard/announcements" className='text-xs' style={({ isActive }) => ({
+            backgroundColor: isActive ? "#71C9CE" : "transparent",
+            color: "black",
+          })}>Announcements</NavLink>
               </li>
             </>
           )}

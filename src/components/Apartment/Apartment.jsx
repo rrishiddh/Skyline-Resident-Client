@@ -119,7 +119,7 @@ const Apartment = () => {
             </option>
           ))}
         </select>
-        <button onClick={handleSearch} className="btn btn-primary">
+        <button onClick={handleSearch} className="btn  bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] text-black">
           Search
         </button>
       </div>

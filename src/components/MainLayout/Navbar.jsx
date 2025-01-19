@@ -121,7 +121,7 @@ const Navbar = () => {
                   <li>
                     <button
                       onClick={handleLogOut}
-                      className="btn btn-sm text-xs "
+                      className="btn btn-sm text-xs  bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] text-black"
                     >
                       Logout
                     </button>

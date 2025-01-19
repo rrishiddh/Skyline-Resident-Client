@@ -62,12 +62,12 @@ const ManageMembers = () => {
                         "Admin"
                       ) : (
                         <button
-                          className="btn btn-sm w-[40%]"
+                          className="btn-ghost btn  btn-sm w-[40%]"
                           onClick={() => handleRemoveMember(user._id)}
                         >
                           <img
                             src="https://img.icons8.com/?size=100&id=99940&format=png&color=000000"
-                            className="w-3 h-3 rounded-full"
+                            className="w-4 h-4 rounded-full"
                           />
                         </button>
                       )}

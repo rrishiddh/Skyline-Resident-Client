@@ -13,14 +13,14 @@ const Footer = () => {
         </aside>
         <nav className="md:place-self-center md:justify-self-end max-sm:mx-auto">
           <div className="grid grid-flow-col gap-4">
-            <a>
+            <a target="blank" href="https://www.facebook.com/"> 
               <img src="https://img.icons8.com/?size=100&id=uLWV5A9vXIPu&format=png&color=000000" className="w-8" />
             </a>
-            <a>
+            <a target="blank" href="https://x.com/">
               <img src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=000000" className="w-8"  />
             </a>
-            <a>
-            <img src="https://img.icons8.com/?size=100&id=19318&format=png&color=000000" className="w-9"  />
+            <a target="blank" href="https://github.com/rrishiddh">
+            <img src="https://img.icons8.com/?size=100&id=12599&format=png&color=000000" className="w-8"  />
             </a>
           </div>
         </nav>

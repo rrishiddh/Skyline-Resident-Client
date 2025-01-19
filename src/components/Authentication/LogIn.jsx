@@ -6,7 +6,7 @@ import login from "../../assets/login.gif";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Login = () => {
-  const { user, userLogin, setUser, signInWithGoogle } =
+  const { user, userLogin, setUser, signInWithGoogle, logOut } =
     useContext(AuthContext);
   const [error, setError] = useState({});
   const navigate = useNavigate();
@@ -30,7 +30,20 @@ const Login = () => {
         Swal.fire({
           title: "Successfully Login!",
           text: `Welcome ${user.displayName}!`,
-          icon: "success",
+          showClass: {
+            popup: `
+              animate__animated
+              animate__fadeInUp
+              animate__faster
+            `,
+          },
+          hideClass: {
+            popup: `
+              animate__animated
+              animate__fadeOutDown
+              animate__faster
+            `,
+          },
         });
         navigate("/");
       })
@@ -44,21 +57,41 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-  
+
         const userInfo = {
           userName: user.displayName,
           userEmail: user.email,
-          role: 'user',
+          role: "user",
         };
-  
+
         axiosPublic.post("/users", userInfo).then((res) => {
           if (res.data.insertedId) {
             Swal.fire({
-              title:  `Welcome, ${user.displayName}!`,
+              title: `Welcome, ${user.displayName}!`,
+              text: `Successfully Registered, Please Login Now!`,
+              showClass: {
+                popup: `
+                  animate__animated
+                  animate__fadeInUp
+                  animate__faster
+                `,
+              },
+              hideClass: {
+                popup: `
+                  animate__animated
+                  animate__fadeOutDown
+                  animate__faster
+                `,
+              },
+            });
+            // logOut();
+          } else {
+            Swal.fire({
+              title: `Welcome ${user.displayName}!`,
               icon: "success",
             });
-            navigate("/");
-          } 
+          }
+          navigate("/");
         });
       })
       .catch((error) => {

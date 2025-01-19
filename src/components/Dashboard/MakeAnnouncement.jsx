@@ -67,7 +67,7 @@ const MakeAnnouncement = () => {
             className="input input-bordered w-full "
             {...register("description", { required: true })}
           />
-          <button className="my-3 btn btn-info">Submit</button>
+          <button className="my-3 btn btn-info bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] text-black">Submit</button>
         </form>
       </div>
     </div>
