@@ -35,8 +35,8 @@ const AdminProfile = () => {
         (user) => user.role == "member"
       );
       
-      const { data: allAgreements = [] } = useQuery({
-        queryKey: ["allAgreements"],
+      const { data: agreementsAvailable = [] } = useQuery({
+        queryKey: ["agreementsAvailable"],
         queryFn: async () => {
           const res = await axiosPublic.get("/agreementsAvailable");
           return res.data;
@@ -63,8 +63,8 @@ const AdminProfile = () => {
             <div >
                 <ul className="text-justify space-y-2 text-sm">
                     <li>Total number of rooms in the database : <span className="font-bold">{apartments.length || "N/A"}</span></li>
-                    <li>Percentage of available rooms in the database : <span className="font-bold">{(((apartments.length-allAgreements.length)/apartments.length)*100).toFixed(2) || "N/A"}% </span> </li>
-                    <li>Percentage of agreement/unavailable rooms in the database : <span className="font-bold">{((allAgreements.length/apartments.length)*100).toFixed(2) || "N/A"}% </span></li>
+                    <li>Percentage of available rooms in the database : <span className="font-bold">{(((apartments.length-agreementsAvailable.length)/apartments.length)*100).toFixed(2) || "N/A"}% </span> </li>
+                    <li>Percentage of agreement/unavailable rooms in the database : <span className="font-bold">{((agreementsAvailable.length/apartments.length)*100).toFixed(2) || "N/A"}% </span></li>
                     <li>Number of users in the database :  <span className="font-bold">{filteredUsers.length || "N/A"}</span></li>
                     <li>Number of members in the database:  <span className="font-bold">{filteredMembers.length || "N/A"}</span></li>
                     
