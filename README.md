@@ -3,7 +3,7 @@
 ## Project Name: Skyline Resident
 
 ### A brief description: 
-- Skyline Resident is a comprehensive building management platform designed to streamline the management and operations of a residential building. The system supports three user roles—Admin, Member, and User—each with distinct access levels and functionalities.
+- Skyline Resident is a comprehensive building management platform designed to streamline the management and operations of a residential building. The system supports three user roles—Admin, Member and User—each with distinct access levels and functionalities.
  
 
 
@@ -100,7 +100,7 @@
 
 ### 
 ##  GitHub Repo Link: 
-###  Server Side : [https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-rrishiddh](https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-rrishiddh)
+###  Server Side : [https://github.com/rrishiddh/Skyline-Resident-Server](https://github.com/rrishiddh/Skyline-Resident-Server)
 
 ##  Site Preview: 
  <div align="center">
