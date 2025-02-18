@@ -18,6 +18,8 @@ import ManageCoupon from "../components/Dashboard/ManageCoupon";
 import AgreementRequests from "../components/Dashboard/AgreementRequests";
 import MakePayment from "../components/Dashboard/MakePayment";
 import PaymentHistory from "../components/Dashboard/PaymentHistory";
+import AnnouncementAndOther from "../components/Announcement/AnnouncementAndOther";
+import Faq from "../components/Dashboard/FAQ";
 
 const router = createBrowserRouter([
     {
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
         {
           path: "/apartment",
           element: <Apartment></Apartment>,
+        },
+        {
+          path: 'announcements&other',
+          element: <AnnouncementAndOther></AnnouncementAndOther>,
+        },
+        {
+          path: 'faq',
+          element: <Faq></Faq>,
         },
         {
           path: "auth",
