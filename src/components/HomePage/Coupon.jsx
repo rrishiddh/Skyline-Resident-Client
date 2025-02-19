@@ -19,7 +19,7 @@ const Coupon = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
       {homeCoupon.map((coupon, idx) => (
-        <div key={idx} className="card bg-base-200  shadow-xl">
+        <div key={idx} className="card bg-slate-100  shadow-xl">
           <div className="card-body  max-sm:text-center">
             <div className="sm:flex  justify-between ">
                 <div>
