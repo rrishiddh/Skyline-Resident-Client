@@ -11,7 +11,7 @@ const ErrorPage = () => {
         <div className="md:my-auto max-sm:mx-auto max-md:w-[80%] max-md:mx-auto" >
           <h2 className="font-bold max-md:text-xl md:text-3xl ">Page Not Found!</h2>
           <Link to="/">
-            <button className="btn mt-5 ">
+            <button className="btn dark:text-black  mt-5 btn-lg max-sm:text-sm bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] font-semibold rounded-lg">
               Go To Home Page
             </button>
           </Link>
