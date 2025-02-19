@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-    <div>
-      <footer className="footer bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] text-black  border-base-300 border-t px-7 py-4 ">
+    <footer className=" bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] text-black  border-base-300 border-t  py-4 ">
+      <div className="footer w-[92%] mx-auto max-sm:pb-3 ">
         <aside className="grid-flow-col max-sm:grid-flow-row items-center">
           <img src="https://img.icons8.com/?size=100&id=9ECnYpBa4VDd&format=png&color=000000" className="w-10 mx-auto" />
           <p>
@@ -24,8 +24,8 @@ const Footer = () => {
             </a>
           </div>
         </nav>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
 };
 
