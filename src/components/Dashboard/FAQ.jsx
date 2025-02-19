@@ -21,29 +21,29 @@ const Faq = () => {
         efficiently manage building operations and resident interactions. Key
         features include:
       </p>
-      <ul>
+      <ul  className="list-disc list-inside font-light space-y-2 my-4">
         <li>
-          <span>User Management : </span>Admins can add, edit, or remove users,
+          <span className="font-bold">User Management : </span>Admins can add, edit, or remove users,
           assign roles, and monitor user activity to ensure a secure and
           organized community environment.
         </li>
         <li>
-          <span> Facility Booking Management : </span> Oversee and approve
+          <span className="font-bold"> Facility Booking Management : </span> Oversee and approve
           facility reservations, manage schedules, and ensure optimal
           utilization of communal spaces.
         </li>
         <li>
-          <span>Maintenance Requests : </span> Track and prioritize maintenance
+          <span className="font-bold">Maintenance Requests : </span> Track and prioritize maintenance
           issues reported by residents, assign tasks to maintenance staff, and
           monitor resolution timelines.
         </li>
         <li>
-          <span>Communication Center : </span> Broadcast important
+          <span className="font-bold">Communication Center : </span> Broadcast important
           announcements, send personalized messages to residents, and facilitate
           effective communication within the community.
         </li>
         <li>
-          <span>Reporting and Analytics : </span> Access comprehensive reports
+          <span className="font-bold">Reporting and Analytics : </span> Access comprehensive reports
           on building operations, user engagement, and other critical metrics to
           inform decision-making.
         </li>
