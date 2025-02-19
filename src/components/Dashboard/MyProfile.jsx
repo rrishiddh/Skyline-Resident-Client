@@ -37,6 +37,29 @@ const MyProfile = () => {
       <p className="mx-auto max-sm:w-[85%] text-center mb-6">
         Welcome, Mr, {user?.displayName}!
       </p>
+      <div>
+                 {/* Stat*/}
+      <div className="grid grid-cols-1 md:grid-cols-3  mx-auto my-6 gap-2 text-center ">
+        <div className="stats shadow">
+          <div className="stat bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] ">
+            <div className="stat-title">Your Floor No.</div>
+            <div className="stat-value">{agreementDetails.floorNo || "N/A"}</div>
+          </div>
+        </div>
+        <div className="stats shadow">
+          <div className="stat bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] ">
+            <div className="stat-title">Your Block No.</div>
+            <div className="stat-value">{agreementDetails.blockName || "N/A"}</div>
+          </div>
+        </div>
+        <div className="stats shadow">
+          <div className="stat bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] ">
+            <div className="stat-title">Your Apartment No.</div>
+            <div className="stat-value">{agreementDetails.apartmentNo || "N/A"}</div>
+          </div>
+        </div>
+      </div>
+              </div>
 
       <div className="card card-compact bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] md:w-[60%] mx-auto p-5 items-center flex md:flex-row justify-between ">
         <div className="grid grid-cols-1 gap-4 ">
@@ -71,6 +94,7 @@ const MyProfile = () => {
                 <li>Block: <span className="font-bold">{agreementDetails.blockName || "N/A"}</span></li>
                 <li>Apartment No: <span className="font-bold">{agreementDetails.apartmentNo || "N/A"}</span></li>
               </ul>
+
             </>
           ) : (
             <ul className="text-justify space-y-4 text-sm">
@@ -82,6 +106,8 @@ const MyProfile = () => {
           )}
         </div>
       </div>
+      
+     
     </div>
   );
 };
