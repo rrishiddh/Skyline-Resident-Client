@@ -1,6 +1,6 @@
 const Faq = () => {
   return (
-    <div className="w-[90%] mx-auto my-10">
+    <div className="w-[90%] mx-auto my-10 text-justify">
       <h1 className="font-bold text-2xl my-6  text-center">
         User Guide & FAQs
       </h1>

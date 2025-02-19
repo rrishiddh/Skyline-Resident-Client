@@ -7,7 +7,7 @@ const WhyUs = () => {
         seamless, efficient and hassle-free. <br /> Here’s why you should choose
         our platform:
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mx-auto text-justify">
         {/* div 1  */}
         <div>
           <ul className="list-disc list-inside font-light space-y-2">

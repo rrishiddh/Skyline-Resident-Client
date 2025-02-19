@@ -56,6 +56,12 @@
 
 
 ### Dependencies:
+- @emotion/react: ^11.14.0
+- @emotion/styled: ^11.14.0
+- @mui/material: ^6.4.5
+- @mui/styled-engine-sc: ^6.4.3
+- @mui/x-charts: ^7.27.0
+- styled-components: ^6.1.15
 - @stripe/react-stripe-js: ^3.1.1
 - @stripe/stripe-js: ^5.5.0
 - @tanstack/react-query: ^5.64.1
@@ -101,6 +107,12 @@
 - Admin Password: Admin123
 
 ###
+## Credential for login to Member Dashboard-
+
+- Member Email: member@gmail.com
+- Member Password: Member123
+
+###
 
 ##  Live Link: 
 ### Surge : [Skyline Resident](https://skyline-resident-rrishiddh.surge.sh)
@@ -125,6 +137,8 @@
   <img width="100%" src="./src/assets/ss06.png"  />
   <br>
   <img width="100%" src="./src/assets/ss07.png"  />
+  <br>
+  <img width="100%" src="./src/assets/ss08.png"  />
 </div>
 
 ### 

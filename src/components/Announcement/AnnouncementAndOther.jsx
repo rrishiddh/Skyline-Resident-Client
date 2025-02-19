@@ -9,7 +9,7 @@ const AnnouncementAndOther = () => {
           About Our Project:
         </h2>
 
-        <ul className="list-disc list-outside font-light space-y-2">
+        <ul className="list-disc list-inside text-justify font-light space-y-2">
           <li>
             {" "}
             <span className="font-bold text-lg">
