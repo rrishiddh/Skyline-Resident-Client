@@ -125,7 +125,7 @@ const Apartment = () => {
       </div>
       {filteredApartments && filteredApartments.length ? (
         <>
-          <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6 mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6 mx-auto dark:text-black">
             {currentPosts.map((apartment, idx) => (
               <motion.div
                 whileHover={{ scale: 1.01 }}
@@ -173,7 +173,7 @@ const Apartment = () => {
               </motion.div>
             ))}
           </div>
-          <div className="mx-auto my-7 flex">
+          <div className="mx-auto my-7 flex dark:text-black">
             <Pagination
               totalPosts={filteredApartments.length}
               postsPerPage={postsPerPage}

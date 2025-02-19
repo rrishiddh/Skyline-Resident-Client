@@ -118,7 +118,7 @@ const Register = () => {
 
   return (
     <div>
-      <div className=" justify-center bg-white items-center py-10">
+      <div className=" justify-center dark:text-black items-center py-10">
         <h2 className="text-2xl font-semibold  text-center mb-6 ">
           Register Your Account
         </h2>
@@ -191,7 +191,7 @@ const Register = () => {
                 </label>
               )}
               <div className="form-control mt-6">
-                <button className="btn max-sm:btn-sm bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] hover:from-[#b9dcdf] hover:to-[#87b9bd] border-blue-400">
+                <button className="btn max-sm:btn-sm dark:text-black bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] hover:from-[#b9dcdf] hover:to-[#87b9bd] border-blue-400">
                   Register
                 </button>
               </div>
@@ -199,7 +199,7 @@ const Register = () => {
             <div className="divider">OR</div>
             <button
               onClick={handelGoogleSignIn}
-              className="btn w-[95%] mx-auto max-sm:btn-sm bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] hover:from-[#b9dcdf] hover:to-[#87b9bd]  border-blue-400  my-4"
+              className="btn w-[95%] mx-auto dark:text-black max-sm:btn-sm bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] hover:from-[#b9dcdf] hover:to-[#87b9bd]  border-blue-400  my-4"
             >
               Register With Google
             </button>

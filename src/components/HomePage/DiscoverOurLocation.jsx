@@ -5,7 +5,7 @@ const DiscoverOurLocation = () => {
       <p className="mx-auto w-[85%] max-sm:text-justify text-center mb-6">
         Skyline Resident is situated in close proximity to Gulshan-1 Circle. Conveniently accessible from both the Badda and Mohakhali bus stops, our property offers excellent connectivity for residents!
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-3  gap-4 my-4">
+      <div className="grid grid-cols-1 md:grid-cols-3  gap-4 my-4 dark:text-black">
         {/* div 1 */}
         <div className="card bg-slate-100  shadow-xl">
           <div className="card-body">

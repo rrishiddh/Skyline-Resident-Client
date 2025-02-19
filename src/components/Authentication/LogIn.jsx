@@ -101,7 +101,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen w-[90%] mx-auto">
-      <div className=" justify-center bg-white items-center my-10">
+      <div className=" justify-center  items-center my-10 dark:text-black">
         <h2 className="text-2xl font-semibold  text-center mb-6 ">
           Login To Your Account
         </h2>
@@ -110,9 +110,9 @@ const Login = () => {
             src={login}
             className="w-[70%] max-sm:w-[50%] mx-auto my-auto"
           ></img>
-          <div className="card card-compact bg-slate-50 border-2 w-[70%] max-sm:mx-auto shrink-0 p-6 mx-auto">
+          <div className="card card-compact  bg-slate-50 border-2 w-[70%] max-sm:mx-auto shrink-0 p-6 mx-auto">
             <form onSubmit={handelSubmit} className="card-body">
-              <div className="form-control">
+              <div className="form-control ">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
@@ -150,7 +150,7 @@ const Login = () => {
             <div className="divider">OR</div>
             <button
               onClick={handelGoogleSignIn}
-              className="btn max-sm:btn-sm  bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] hover:from-[#b9dcdf] hover:to-[#87b9bd]  border-blue-400 w-[95%] mx-auto my-4"
+              className="btn max-sm:btn-sm dark:text-black  bg-gradient-to-r from-[#CBF1F5] to-[#A6E3E9] hover:from-[#b9dcdf] hover:to-[#87b9bd]  border-blue-400 w-[95%] mx-auto my-4"
             >
               Sign In With Google
             </button>

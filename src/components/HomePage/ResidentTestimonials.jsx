@@ -5,7 +5,7 @@ const ResidentTestimonials = () => {
         Resident Testimonials
       </h1>
       <p className="mx-auto max-sm:w-[85%] max-sm:text-justify text-center mb-6"></p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 dark:text-black">
         {/* card-1  */}
         <div className="card bg-slate-100 shadow-xl">
           <div className="card-body">
